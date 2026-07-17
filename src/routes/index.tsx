@@ -41,6 +41,48 @@ function Ornament() {
   );
 }
 
+/* a butterfly wandering the scene — fine gold line-work, wings truly flapping */
+function HeroButterfly({ top, delay, dur, tint }: { top: string; delay: number; dur: number; tint: string }) {
+  return (
+    <motion.div
+      aria-hidden
+      className="pointer-events-none absolute left-0"
+      style={{ top, color: tint }}
+      initial={{ x: "-14vw", opacity: 0 }}
+      animate={{ x: ["-14vw", "28vw", "60vw", "110vw"], y: [0, -42, 26, -54, 8], opacity: [0, 0.75, 0.75, 0.6, 0] }}
+      transition={{ duration: dur, repeat: Infinity, delay, ease: "easeInOut" }}
+    >
+      <svg
+        viewBox="0 0 40 30"
+        className="h-5 w-7"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="0.9"
+        style={{ filter: "drop-shadow(0 0 5px rgba(212,166,90,0.35))" }}
+      >
+        <motion.g
+          animate={{ scaleX: [1, 0.3, 1] }}
+          transition={{ duration: 0.5, repeat: Infinity, ease: "easeInOut" }}
+          style={{ transformOrigin: "20px 15px" }}
+        >
+          <path d="M19 15 C 14 4 4 3 3 9 C 2.5 13 8 17 17 20" />
+          <path d="M17 20 C 12 22 9 26 11 27 C 13 28 17 25 19 21" />
+        </motion.g>
+        <motion.g
+          animate={{ scaleX: [0.3, 1, 0.3] }}
+          transition={{ duration: 0.5, repeat: Infinity, ease: "easeInOut" }}
+          style={{ transformOrigin: "20px 15px" }}
+        >
+          <path d="M21 15 C 26 4 36 3 37 9 C 37.5 13 32 17 23 20" />
+          <path d="M23 20 C 28 22 31 26 29 27 C 27 28 23 25 21 21" />
+        </motion.g>
+        <path d="M20 13 v10" strokeWidth="1.1" strokeLinecap="round" />
+        <path d="M19 13 C 17.5 10.5 16.5 9.5 15.5 9 M21 13 C 22.5 10.5 23.5 9.5 24.5 9" strokeWidth="0.7" />
+      </svg>
+    </motion.div>
+  );
+}
+
 /* --------------------------------- HERO --------------------------------- */
 /* the painted window at dusk — one artwork carries the whole scene,
    exactly as the reference mockup: scene → ornate countdown → CTA */
@@ -73,11 +115,13 @@ function Hero() {
         transition={{ duration: 2.4, ease: EASE }}
       >
         {artOk ? (
-          <img
+          <motion.img
             src="/hero.png?v=4"
             alt="A candlelit desk before an arched window at dusk — dark roses, vintage jewellery, a melting candle, and a jar of fairy lights"
-            className="h-full w-full object-cover object-[50%_35%] md:object-contain"
+            className="h-full w-full object-cover object-[50%_35%] will-change-transform md:object-contain"
             onError={() => setArtOk(false)}
+            animate={{ scale: [1, 1.06, 1.04, 1], x: ["0%", "-1.4%", "1%", "0%"], y: ["0%", "-1%", "-0.4%", "0%"] }}
+            transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
           />
         ) : (
           /* graceful stand-in until /hero.png is added to public/ */
@@ -139,6 +183,61 @@ function Hero() {
           )}
         </button>
 
+        {/* the candle breathes — a warm glow over the lower-left flame */}
+        <motion.div
+          aria-hidden
+          className="pointer-events-none absolute bottom-[20%] left-[8%] h-40 w-40 rounded-full"
+          style={{ background: "radial-gradient(circle, rgba(212,166,90,0.28), transparent 65%)" }}
+          animate={{ opacity: [0.55, 0.9, 0.5, 0.85, 0.6], scale: [1, 1.06, 0.98, 1.04, 1] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        />
+        {/* the fairy-light jar pulses — a warm glow over the lower-right */}
+        <motion.div
+          aria-hidden
+          className="pointer-events-none absolute bottom-[16%] right-[10%] h-44 w-44 rounded-full"
+          style={{ background: "radial-gradient(circle, rgba(212,166,90,0.24), transparent 62%)" }}
+          animate={{ opacity: [0.7, 1, 0.65, 0.95, 0.75] }}
+          transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
+        />
+
+        {/* a rose petal or two lets go and drifts down through the scene */}
+        {[0, 1].map((i) => (
+          <motion.span
+            key={`hpetal-${i}`}
+            aria-hidden
+            className="pointer-events-none absolute text-rose"
+            style={{ left: `${26 + i * 44}%` }}
+            initial={{ top: "-5%", opacity: 0 }}
+            animate={{ top: ["-5%", "84%"], x: [0, 22, -14, 24], rotate: [0, 160, 300, 470], opacity: [0, 0.85, 0.85, 0] }}
+            transition={{ duration: 17 + i * 3, repeat: Infinity, delay: i * 8, ease: "easeIn" }}
+          >
+            <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="currentColor">
+              <path d="M12 2c3 6 7 8 7 13a7 7 0 1 1-14 0c0-5 4-7 7-13z" opacity="0.85" />
+            </svg>
+          </motion.span>
+        ))}
+
+        {/* embers drift up from the candlelight */}
+        {[...Array(6)].map((_, i) => (
+          <motion.span
+            key={`ember-${i}`}
+            aria-hidden
+            className="pointer-events-none absolute h-1 w-1 rounded-full bg-candle"
+            style={{ left: `${12 + ((i * 15) % 74)}%`, boxShadow: "0 0 6px 1px rgba(212,166,90,0.5)" }}
+            initial={{ bottom: "12%", opacity: 0 }}
+            animate={{
+              bottom: ["12%", "62%"],
+              x: [0, (i % 2 ? 1 : -1) * (10 + ((i * 6) % 20)), 0],
+              opacity: [0, 0.85, 0.3, 0],
+            }}
+            transition={{ duration: 9 + (i % 4) * 2, repeat: Infinity, delay: i * 1.6, ease: "easeInOut" }}
+          />
+        ))}
+
+        {/* butterflies wandering the scene */}
+        <HeroButterfly top="34%" delay={2} dur={20} tint="#D4A65A" />
+        <HeroButterfly top="58%" delay={11} dur={26} tint="#B0788A" />
+
         {/* drifting dust over the scene */}
         {[...Array(9)].map((_, i) => (
           <span
@@ -158,6 +257,7 @@ function Hero() {
             a candle-flicker chevron whispers "there is more below" */}
         <motion.div
           className="absolute inset-x-0 bottom-[7.5rem] z-10 flex flex-col items-center gap-2.5 px-6 md:bottom-10"
+          style={{ paddingRight: "14%" }}
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 2, delay: 0.8, ease: EASE }}
@@ -195,7 +295,22 @@ function ArchiveShelf() {
     { name: "One of One", sub: "Waiting to Be Inherited", img: "/hero.png?v=4", pos: "32% 86%", to: "#drop" },
   ];
   return (
-    <section id="shelf" className="relative scroll-mt-16 py-12">
+    <section id="shelf" className="relative scroll-mt-16 overflow-hidden py-12">
+      {/* the dark collections band — the damask cloth, shown near full over a
+          dark base, edges faded into the page so there is no hard break */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-[#150E16]" />
+        <div
+          className="absolute inset-0 opacity-90"
+          style={{ backgroundImage: "url(/collections.png?v=1)", backgroundSize: "cover", backgroundPosition: "center" }}
+        />
+        <div className="absolute inset-0 bg-[#150E16]/25" />
+        <div
+          className="absolute inset-0"
+          style={{ background: "linear-gradient(180deg, #221724 0%, transparent 14%, transparent 86%, #221724 100%)" }}
+        />
+      </div>
+
       {/* Find Your Perfect Match — bold serif, quiet subtitle beneath */}
       <motion.div
         className="px-6 sm:px-12"

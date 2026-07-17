@@ -26,35 +26,10 @@ export function Countdown() {
     <div
       className="relative inline-block overflow-hidden px-5 py-2.5 sm:px-9 sm:py-3.5"
       style={{
-        border: "1px solid rgba(184,148,90,0.7)",
+        border: "1px solid rgba(184,148,90,0.65)",
         borderRadius: "26px",
-        boxShadow: "0 0 34px rgba(212,166,90,0.14)",
       }}
     >
-      {/* a slow light travels the frame every few seconds */}
-      <span
-        aria-hidden
-        className="pointer-events-none absolute inset-0 animate-shimmer opacity-50"
-        style={{
-          borderRadius: "34px",
-          padding: "1.5px",
-          WebkitMask: "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
-          WebkitMaskComposite: "xor",
-          maskComposite: "exclude",
-          animationDuration: "5.5s",
-        }}
-      />
-
-      {/* the faintest dust inside the glass of the frame */}
-      {[...Array(4)].map((_, i) => (
-        <span
-          key={i}
-          aria-hidden
-          className="pointer-events-none absolute h-0.5 w-0.5 rounded-full bg-candle/40 animate-floaty"
-          style={{ left: `${14 + ((i * 24) % 72)}%`, top: `${25 + ((i * 31) % 50)}%`, animationDelay: `${i * 1.6}s`, animationDuration: `${10 + i * 2}s` }}
-        />
-      ))}
-
       {/* inner engraved hairline */}
       <span className="pointer-events-none absolute inset-[5px] rounded-[29px] border border-gold/25" />
       {/* small stars set into the frame's sides */}

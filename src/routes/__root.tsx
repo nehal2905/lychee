@@ -111,10 +111,9 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
-// each room of the archive is dressed in its own cloth.
-// home wears the damask (a fixed layer, below), so it stays transparent here.
+// each room of the archive is dressed in its own cloth
 function pageTexture(pathname: string) {
-  if (pathname === "/") return "";
+  if (pathname === "/") return "page-crushed";
   if (pathname.startsWith("/lore")) return "page-crushed";
   if (pathname.startsWith("/checkout")) return "page-crushed";
   if (pathname.startsWith("/faq")) return "page-laid";
@@ -125,25 +124,10 @@ function pageTexture(pathname: string) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const onHome = pathname === "/";
 
   return (
     <QueryClientProvider client={queryClient}>
       <StoreProvider>
-        {/* the damask cloth — a single fixed layer behind everything on home.
-            fixed (not background-attachment) so it never flickers on scroll. */}
-        {onHome && (
-          <div
-            aria-hidden
-            className="pointer-events-none fixed inset-0 -z-10"
-            style={{
-              backgroundColor: "#150E16",
-              backgroundImage: "url(/collections.png?v=1)",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          />
-        )}
         <OpeningExperience />
         <Nav />
         {/* bottom padding on mobile so the fixed bottom nav never covers content */}
