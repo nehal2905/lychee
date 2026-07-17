@@ -55,7 +55,14 @@ function Hero() {
   };
 
   return (
-    <section className="relative overflow-hidden pb-2">
+    <section
+      className="relative overflow-hidden pb-16"
+      style={{
+        /* opaque behind the artwork and countdown, then a long dissolve that
+           lets the page's paper texture surface gradually — no tonal step */
+        background: "linear-gradient(180deg, #221724 0%, #221724 58%, rgba(34,23,36,0) 100%)",
+      }}
+    >
       {/* the painted scene — the whole artwork, full width */}
       <motion.div
         className="relative mx-auto max-w-xl"

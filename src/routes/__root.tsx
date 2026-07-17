@@ -132,12 +132,13 @@ function RootComponent() {
         <Nav />
         {/* bottom padding on mobile so the fixed bottom nav never covers content */}
         <div className="pb-[62px] md:pb-0">
-          {/* a soft page-turn between routes — opacity and a breath of lift, nothing busy */}
+          {/* a soft page-turn between routes — opacity only: a transform here
+              would break position:fixed for bars and overlays inside pages */}
           <motion.main
             key={pathname}
             className={`min-h-screen ${pageTexture(pathname)}`}
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <Outlet />

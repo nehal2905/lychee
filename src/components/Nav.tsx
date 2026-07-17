@@ -49,6 +49,16 @@ export function Nav() {
           </Link>
 
           <div className="flex items-center gap-4">
+            {/* exit — from any inner page, one tap returns to the entrance */}
+            {onSubpage && (
+              <Link
+                to="/"
+                aria-label="Exit to home"
+                className="font-display text-xl leading-none text-gold/70 transition-colors duration-500 hover:text-candle"
+              >
+                ×
+              </Link>
+            )}
             <div className="hidden sm:block">
               <KeysProgress />
             </div>
