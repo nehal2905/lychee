@@ -24,13 +24,11 @@ export function Countdown() {
 
   return (
     <div
-      className="relative inline-block overflow-hidden px-8 py-4.5 backdrop-blur-md sm:px-14 sm:py-6"
+      className="relative inline-block overflow-hidden px-7 py-3.5 sm:px-11 sm:py-4.5"
       style={{
         border: "1px solid rgba(184,148,90,0.72)",
-        borderRadius: "34px",
-        backgroundColor: "rgba(22,15,23,0.26)",
-        backgroundImage: "radial-gradient(ellipse at 50% 0%, rgba(184,148,90,0.09), transparent 70%)",
-        boxShadow: "0 0 44px rgba(212,166,90,0.18), 0 10px 34px rgba(0,0,0,0.45), inset 0 0 26px rgba(0,0,0,0.3)",
+        borderRadius: "30px",
+        boxShadow: "0 0 40px rgba(212,166,90,0.16)",
       }}
     >
       {/* a slow light travels the frame every few seconds */}
@@ -63,11 +61,11 @@ export function Countdown() {
       <span className="absolute -left-[5px] top-1/2 -translate-y-1/2 bg-background px-0.5 font-display text-[9px] text-gold">✦</span>
       <span className="absolute -right-[5px] top-1/2 -translate-y-1/2 bg-background px-0.5 font-display text-[9px] text-gold">✦</span>
 
-      <div className="small-caps text-sm tracking-[0.3em] text-cream">
+      <div className="small-caps text-xs tracking-[0.3em] text-cream" style={{ textShadow: "0 1px 6px rgba(0,0,0,0.8)" }}>
         {lead} · {when}
       </div>
 
-      <div className="mt-2.5 flex items-start justify-center gap-2.5 font-display text-parchment sm:gap-3.5">
+      <div className="mt-2 flex items-start justify-center gap-2 font-display text-parchment sm:gap-3" style={{ textShadow: "0 1px 8px rgba(0,0,0,0.85)" }}>
         <Unit v={t.d} l="Days" />
         <Colon />
         <Unit v={t.h} l="Hrs" />
@@ -81,14 +79,14 @@ export function Countdown() {
 }
 
 function Colon() {
-  return <span className="pt-0.5 text-2xl text-gold/70 sm:text-3xl">:</span>;
+  return <span className="pt-0.5 text-xl text-gold/70 sm:text-2xl">:</span>;
 }
 
 function Unit({ v, l }: { v: number; l: string }) {
   return (
-    <span className="flex w-10 flex-col items-center sm:w-12">
-      <span className="text-3xl tabular-nums leading-none sm:text-4xl">{v.toString().padStart(2, "0")}</span>
-      <span className="mt-1.5 small-caps text-[9px] tracking-[0.28em] text-haze">{l}</span>
+    <span className="flex w-8 flex-col items-center sm:w-10">
+      <span className="text-2xl tabular-nums leading-none sm:text-3xl">{v.toString().padStart(2, "0")}</span>
+      <span className="mt-1 small-caps text-[9px] tracking-[0.28em] text-cream/70">{l}</span>
     </span>
   );
 }

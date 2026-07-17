@@ -154,15 +154,25 @@ function Hero() {
           style={{ background: "linear-gradient(180deg, transparent, rgba(34,23,36,0.5) 55%, #221724)" }}
         />
 
-        {/* the countdown floats at the stage's foot — lifted clear of the
-            bottom nav on mobile so it is always fully visible */}
+        {/* the countdown floats over the desk, fully visible — and beneath it,
+            a candle-flicker chevron whispers "there is more below" */}
         <motion.div
-          className="absolute inset-x-0 bottom-24 z-10 flex justify-center px-6 md:bottom-8"
+          className="absolute inset-x-0 bottom-[7.5rem] z-10 flex flex-col items-center gap-2.5 px-6 md:bottom-10"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 2, delay: 0.8, ease: EASE }}
         >
           <Countdown />
+          <motion.span
+            aria-hidden
+            className="animate-flicker text-candle"
+            animate={{ y: [0, 5, 0] }}
+            transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round">
+              <path d="M5 9 l7 7 l7 -7" />
+            </svg>
+          </motion.span>
         </motion.div>
       </motion.div>
 
