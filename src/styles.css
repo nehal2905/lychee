@@ -1,0 +1,537 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================
+   LYCHEE LORE — the collector's archive
+   an editorial, candlelit design system.
+   nothing perfectly aligned. nothing repeated. nothing loud.
+   ============================================================ */
+
+@theme inline {
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 16px;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-panel: var(--panel);
+  --color-dusk: var(--dusk);
+  --color-haze: var(--haze);
+  --color-cream: var(--cream);
+  --color-parchment: var(--parchment);
+  --color-gold: var(--gold);
+  --color-candle: var(--candle);
+  --color-rose: var(--rose);
+  --color-mauve: var(--mauve);
+  --color-wood: var(--wood);
+  --color-oxblood: var(--oxblood);
+  --color-ink: var(--ink);
+  --color-sage: var(--sage);
+
+  --color-primary: var(--gold);
+  --color-primary-foreground: var(--panel);
+  --color-secondary: var(--dusk);
+  --color-secondary-foreground: var(--cream);
+  --color-muted: var(--panel);
+  --color-muted-foreground: var(--haze);
+  --color-accent: var(--candle);
+  --color-accent-foreground: var(--panel);
+  --color-destructive: var(--oxblood);
+  --color-destructive-foreground: var(--cream);
+  --color-border: color-mix(in oklab, var(--gold) 22%, transparent);
+  --color-input: color-mix(in oklab, var(--gold) 22%, transparent);
+  --color-ring: var(--gold);
+  --color-card: var(--panel);
+  --color-card-foreground: var(--cream);
+  --color-popover: var(--panel);
+  --color-popover-foreground: var(--cream);
+
+  --font-display: "Bodoni Moda", "Playfair Display", serif;
+  --font-serif: "EB Garamond", "Lora", serif;
+  --font-mono: "Special Elite", ui-monospace, monospace;
+  --font-hand: "Pinyon Script", cursive;
+
+  --ease-velvet: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root {
+  /* deep aubergine velvet — the crushed-plum of the brand's damask cloth.
+     sage exists solely for tiny illustrated botanical sprigs. */
+  --background: #221724;
+  --foreground: #E8DCC5;
+  --panel: #160F17;
+  --dusk: #4A3556;
+  --haze: #8C6B72;
+  --cream: #E8DCC5;
+  --parchment: #F3E9D7;
+  --gold: #B8945A;
+  --candle: #D4A65A;
+  --rose: #B0788A;
+  --mauve: #8C6B72;
+  --wood: #5C4033;
+  --oxblood: #6E2A2A;
+  --ink: #3a2b1a;
+  --sage: #8D9B7B;
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-serif);
+    font-feature-settings: "liga", "kern", "onum";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  /* Aged-paper grain across the whole archive */
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.07;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.9  0 0 0 0 0.85  0 0 0 0 0.7  0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  /* Candlelit vignette — the room is dim at its corners */
+  body::after {
+    content: "";
+    position: fixed; inset: 0;
+    pointer-events: none;
+    z-index: 99;
+    background: radial-gradient(ellipse at center, transparent 52%, rgba(8,4,6,0.6) 100%);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+    color: var(--cream);
+    font-weight: 500;
+  }
+
+  ::selection {
+    background: var(--gold);
+    color: var(--panel);
+  }
+
+  ::-webkit-scrollbar { width: 9px; height: 9px; }
+  ::-webkit-scrollbar-track { background: var(--panel); }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--gold), var(--wood));
+    border-radius: 8px;
+    border: 2px solid var(--panel);
+  }
+
+  input, select, textarea { font-family: var(--font-serif); }
+}
+
+/* ============================================================
+   Page cloths — each room of the archive is dressed differently.
+   velvet mottle · damask scrollwork · crushed paper · laid paper
+   ============================================================ */
+
+/* mottled velvet — patches of worn plum, like the reference cloth */
+@utility page-velvet {
+  background-color: var(--background);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='520' height='520'><filter id='v'><feTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='4' seed='7' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.49  0 0 0 0 0.35  0 0 0 0 0.43  0 0 0 0.4 0'/></filter><rect width='100%' height='100%' filter='url(%23v)'/></svg>");
+  background-size: 520px 520px;
+}
+
+/* velvet with faded damask scrollwork pressed into it */
+@utility page-damask {
+  background-color: var(--background);
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><g fill='none' stroke='%237d5a6d' stroke-opacity='0.085' stroke-width='1.1'><path d='M40 205 C 18 175 28 142 58 138 C 86 134 96 158 82 172 C 72 182 56 179 55 166 C 54 156 64 152 70 158'/><path d='M220 55 C 242 85 232 118 202 122 C 174 126 164 102 178 88 C 188 78 204 81 205 94 C 206 104 196 108 190 102'/><path d='M130 20 q14 22 0 44 q-14 -22 0 -44z'/><path d='M35 90 q20 8 24 30 M225 170 q-20 -8 -24 -30'/><ellipse cx='150' cy='215' rx='16' ry='7' transform='rotate(-30 150 215)'/><ellipse cx='105' cy='70' rx='13' ry='5.5' transform='rotate(38 105 70)'/><circle cx='60' cy='60' r='2'/><circle cx='200' cy='200' r='2'/><circle cx='240' cy='120' r='1.5'/><circle cx='20' cy='140' r='1.5'/></g></svg>"),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='520' height='520'><filter id='v'><feTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='4' seed='7' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.49  0 0 0 0 0.35  0 0 0 0 0.43  0 0 0 0.4 0'/></filter><rect width='100%' height='100%' filter='url(%23v)'/></svg>");
+  background-size: 260px 260px, 520px 520px;
+}
+
+/* crushed paper — creases caught in raking candlelight */
+@utility page-crushed {
+  background-color: var(--background);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='420'><filter id='c'><feTurbulence type='fractalNoise' baseFrequency='0.024' numOctaves='5' seed='11' stitchTiles='stitch'/><feDiffuseLighting lighting-color='white' surfaceScale='2.4' diffuseConstant='1.1'><feDistantLight azimuth='45' elevation='58'/></feDiffuseLighting><feColorMatrix values='0 0 0 0 0.55  0 0 0 0 0.42  0 0 0 0 0.5  0.16 0 0 0 0'/></filter><rect width='100%' height='100%' filter='url(%23c)'/></svg>");
+  background-size: 420px 420px;
+}
+
+/* laid paper — the faint chain-lines of an old ledger's stock */
+@utility page-laid {
+  background-color: var(--background);
+  background-image:
+    repeating-linear-gradient(0deg, rgba(232,220,197,0.026) 0 1px, transparent 1px 7px),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='520' height='520'><filter id='v'><feTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='4' seed='7' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.49  0 0 0 0 0.35  0 0 0 0 0.43  0 0 0 0.32 0'/></filter><rect width='100%' height='100%' filter='url(%23v)'/></svg>");
+  background-size: auto, 520px 520px;
+}
+
+/* ============================================================
+   Typography instruments
+   ============================================================ */
+
+@utility font-display { font-family: var(--font-display); }
+@utility font-serif-body { font-family: var(--font-serif); }
+@utility font-type { font-family: var(--font-mono); }
+@utility font-hand { font-family: var(--font-hand); }
+
+@utility text-shadow-warm {
+  text-shadow: 0 1px 0 rgba(0,0,0,0.4), 0 0 34px color-mix(in oklab, var(--candle) 28%, transparent);
+}
+
+@utility small-caps {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.16em;
+}
+
+/* an overline label, the way a museum labels a vitrine */
+@utility overline-label {
+  font-family: var(--font-serif);
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.42em;
+  font-size: 0.68rem;
+  color: color-mix(in oklab, var(--gold) 78%, transparent);
+}
+
+/* enormous editorial display heading */
+@utility display-xl {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 0.94;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+}
+
+/* drop cap for lore paragraphs */
+@utility dropcap {
+  &::first-letter {
+    font-family: var(--font-display);
+    font-style: italic;
+    float: left;
+    font-size: 3.2em;
+    line-height: 0.8;
+    padding-right: 0.08em;
+    padding-top: 0.06em;
+    color: var(--wood);
+  }
+}
+
+@utility vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+/* ============================================================
+   Surfaces — paper, velvet, seals
+   ============================================================ */
+
+@utility paper {
+  background:
+    radial-gradient(ellipse at 20% 10%, rgba(0,0,0,0.08), transparent 60%),
+    radial-gradient(ellipse at 80% 90%, rgba(0,0,0,0.14), transparent 60%),
+    linear-gradient(172deg, #f0e2c6, #e6d3ae 70%, #ddc79f);
+  color: var(--ink);
+  box-shadow:
+    inset 0 0 40px rgba(92,64,51,0.25),
+    0 14px 40px rgba(0,0,0,0.55);
+}
+
+/* deckled top-and-bottom edges — torn by hand, never symmetric */
+@utility deckle {
+  --w: 7px;
+  -webkit-mask:
+    radial-gradient(var(--w) at 50% 0, transparent 97%, #000 100%) 3px 0/17px 51% repeat-x,
+    radial-gradient(var(--w) at 50% 100%, transparent 97%, #000 100%) 8px 100%/23px 51% repeat-x;
+          mask:
+    radial-gradient(var(--w) at 50% 0, transparent 97%, #000 100%) 3px 0/17px 51% repeat-x,
+    radial-gradient(var(--w) at 50% 100%, transparent 97%, #000 100%) 8px 100%/23px 51% repeat-x;
+}
+
+@utility torn-edge {
+  --w: 8px;
+  -webkit-mask:
+    radial-gradient(var(--w) at 50% 100%, transparent 98%, #000 100%) 50% calc(100% - 0px)/16px 100% repeat-x,
+    linear-gradient(#000,#000) top/100% calc(100% - var(--w)) no-repeat;
+          mask:
+    radial-gradient(var(--w) at 50% 100%, transparent 98%, #000 100%) 50% calc(100% - 0px)/16px 100% repeat-x,
+    linear-gradient(#000,#000) top/100% calc(100% - var(--w)) no-repeat;
+}
+
+/* folded corner — a page someone kept returning to */
+@utility fold-corner {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0; bottom: 0;
+    width: 26px; height: 26px;
+    background: linear-gradient(135deg, transparent 50%, rgba(92,64,51,0.35) 50%, rgba(58,43,26,0.15));
+    box-shadow: -2px -2px 4px rgba(0,0,0,0.12);
+  }
+}
+
+@utility gold-frame {
+  border: 1px solid color-mix(in oklab, var(--gold) 50%, transparent);
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,0.35),
+    inset 0 0 30px rgba(0,0,0,0.4),
+    0 0 40px color-mix(in oklab, var(--candle) 12%, transparent);
+}
+
+@utility candle-glow {
+  box-shadow:
+    0 0 30px color-mix(in oklab, var(--candle) 38%, transparent),
+    0 0 80px color-mix(in oklab, var(--candle) 14%, transparent);
+}
+
+/* thin engraved hairline that fades at both ends */
+@utility hairline {
+  height: 1px;
+  border: 0;
+  background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--gold) 65%, transparent), transparent);
+}
+
+/* wax seal */
+@utility wax-seal {
+  background:
+    radial-gradient(circle at 35% 30%, #a8443a, #6E2A2A 60%, #4a1a1a 100%);
+  color: var(--parchment);
+  border-radius: 999px;
+  box-shadow:
+    inset -2px -3px 8px rgba(0,0,0,0.5),
+    inset 2px 3px 6px rgba(255,255,255,0.15),
+    0 4px 12px rgba(0,0,0,0.5);
+}
+
+/* ============================================================
+   Buttons that do not look like buttons
+   ============================================================ */
+
+/* museum plaque — engraved gold label */
+@utility btn-plaque {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  padding: 0.95em 2.4em;
+  font-family: var(--font-serif);
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.32em;
+  font-size: 0.8rem;
+  color: var(--cream);
+  background: linear-gradient(180deg, color-mix(in oklab, var(--gold) 14%, transparent), color-mix(in oklab, var(--gold) 5%, transparent));
+  border: 1px solid color-mix(in oklab, var(--gold) 55%, transparent);
+  outline: 1px solid color-mix(in oklab, var(--gold) 22%, transparent);
+  outline-offset: 3px;
+  overflow: hidden;
+  transition: color 0.6s var(--ease-velvet), border-color 0.6s var(--ease-velvet);
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 40%, color-mix(in oklab, var(--candle) 30%, transparent) 50%, transparent 60%);
+    transform: translateX(-120%);
+    transition: transform 1.4s var(--ease-velvet);
+  }
+  &:hover { color: var(--parchment); border-color: color-mix(in oklab, var(--gold) 85%, transparent); }
+  &:hover::after { transform: translateX(120%); }
+}
+
+/* solid plaque — for the single most important act on a page */
+@utility btn-seal-plaque {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  padding: 1.05em 2.4em;
+  font-family: var(--font-serif);
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.3em;
+  font-size: 0.82rem;
+  color: var(--panel);
+  background: linear-gradient(180deg, #cfa96a, var(--gold) 55%, #96753f);
+  border: 1px solid #6d5430;
+  outline: 1px solid color-mix(in oklab, var(--gold) 35%, transparent);
+  outline-offset: 3px;
+  overflow: hidden;
+  box-shadow: 0 0 34px color-mix(in oklab, var(--candle) 26%, transparent);
+  &::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(105deg, transparent 42%, rgba(255,249,235,0.5) 50%, transparent 58%);
+    transform: translateX(-130%);
+    transition: transform 1.6s var(--ease-velvet);
+  }
+  &:hover::after { transform: translateX(130%); }
+}
+
+/* quiet italic text link with a hand-drawn underline feeling */
+@utility link-quiet {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--cream);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, var(--gold) 45%, transparent);
+  text-underline-offset: 7px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color 0.5s var(--ease-velvet), color 0.5s var(--ease-velvet);
+  &:hover { color: var(--parchment); text-decoration-color: var(--gold); }
+}
+
+/* underlined blank line — writing on a letter */
+@utility field-line {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid color-mix(in oklab, var(--gold) 35%, transparent);
+  border-radius: 0;
+  padding: 0.7em 0.1em;
+  color: var(--cream);
+  font-family: var(--font-serif);
+  transition: border-color 0.5s var(--ease-velvet);
+  &::placeholder { color: color-mix(in oklab, var(--haze) 75%, transparent); font-style: italic; }
+  &:focus { outline: none; border-color: var(--gold); }
+}
+
+/* same, on paper */
+@utility field-line-ink {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(92,64,51,0.4);
+  border-radius: 0;
+  padding: 0.6em 0.1em;
+  color: var(--ink);
+  font-family: var(--font-serif);
+  &::placeholder { color: rgba(92,64,51,0.55); font-style: italic; }
+  &:focus { outline: none; border-bottom-color: var(--wood); }
+}
+
+/* ============================================================
+   Imperfections
+   ============================================================ */
+
+@utility rotate-imperfect-1 { transform: rotate(-1.4deg); }
+@utility rotate-imperfect-2 { transform: rotate(1.1deg); }
+@utility rotate-imperfect-3 { transform: rotate(-0.6deg); }
+@utility rotate-imperfect-4 { transform: rotate(2deg); }
+
+/* ============================================================
+   Motion — slow, cinematic, never bouncy
+   ============================================================ */
+
+@keyframes floaty {
+  0%,100% { transform: translateY(0) translateX(0); opacity: 0.35; }
+  50% { transform: translateY(-16px) translateX(7px); opacity: 0.85; }
+}
+@utility animate-floaty { animation: floaty 9s ease-in-out infinite; }
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; filter: brightness(1); }
+  45% { opacity: 0.9; filter: brightness(1.08); }
+  50% { opacity: 0.76; filter: brightness(0.88); }
+  55% { opacity: 0.95; filter: brightness(1.04); }
+}
+@utility animate-flicker { animation: flicker 5s ease-in-out infinite; }
+
+@keyframes twinkle {
+  0%,100% { opacity: 0.25; transform: scale(0.92); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+@utility animate-twinkle { animation: twinkle 4s ease-in-out infinite; }
+
+/* a very slow drift, like dust in candlelight */
+@keyframes driftslow {
+  0%,100% { transform: translate3d(0,0,0); }
+  33% { transform: translate3d(14px,-10px,0); }
+  66% { transform: translate3d(-10px,8px,0); }
+}
+@utility animate-driftslow { animation: driftslow 22s ease-in-out infinite; }
+
+/* the jewel breathes */
+@keyframes breathe {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+@utility animate-breathe { animation: breathe 7s ease-in-out infinite; }
+
+@keyframes glowpulse {
+  0%,100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+@utility animate-glowpulse { animation: glowpulse 8s ease-in-out infinite; }
+
+@keyframes pageturn {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+}
+@utility animate-pageturn { animation: pageturn 1.2s cubic-bezier(0.7,0,0.3,1) forwards; }
+
+@keyframes shellopen {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-55deg); }
+}
+@utility animate-shellopen {
+  animation: shellopen 2.2s cubic-bezier(0.4,0,0.2,1) forwards;
+  transform-origin: 0% 100%;
+}
+
+@keyframes pendulum {
+  0%,100% { transform: rotate(-14deg); }
+  50% { transform: rotate(14deg); }
+}
+@utility animate-pendulum { animation: pendulum 2s ease-in-out infinite; transform-origin: top center; }
+
+@keyframes keyturn {
+  0%,100% { transform: rotate(-10deg); }
+  50% { transform: rotate(60deg); }
+}
+@utility animate-keyturn { animation: keyturn 2.4s ease-in-out infinite; transform-origin: 30% 50%; }
+
+@keyframes shimmer-x {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@utility animate-shimmer {
+  background: linear-gradient(90deg,
+    transparent,
+    color-mix(in oklab, var(--gold) 40%, transparent),
+    transparent);
+  background-size: 200% 100%;
+  animation: shimmer-x 3s linear infinite;
+}
+
+@keyframes bloom {
+  0% { transform: scale(0.4); opacity: 0; }
+  40% { transform: scale(1.4); opacity: 1; }
+  100% { transform: scale(1); opacity: 0; }
+}
+@utility animate-bloom { animation: bloom 0.9s ease-out forwards; }
+
+@keyframes flutter {
+  0% { transform: translate(0,0) rotate(0deg); }
+  25% { transform: translate(-40px,-30px) rotate(-12deg); }
+  50% { transform: translate(30px,-50px) rotate(10deg); }
+  75% { transform: translate(20px,-20px) rotate(-4deg); }
+  100% { transform: translate(0,0) rotate(0deg); }
+}
+@utility animate-flutter { animation: flutter 6s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  * , *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
