@@ -41,6 +41,52 @@ function Ornament() {
   );
 }
 
+/* ambient life for any section — drifting dust, twinkling brass stars,
+   and now and then a slow ember rising. all motion, nothing static. */
+function AmbientLife({ dust = 7, stars = 3 }: { dust?: number; stars?: number }) {
+  return (
+    <div className="pointer-events-none absolute inset-0 -z-0 overflow-hidden">
+      {/* drifting golden dust */}
+      {Array.from({ length: dust }).map((_, i) => (
+        <span
+          key={`d-${i}`}
+          className="absolute h-0.5 w-0.5 rounded-full bg-candle/40 animate-floaty"
+          style={{
+            left: `${(i * 37) % 96}%`,
+            top: `${(i * 53) % 90}%`,
+            animationDelay: `${i * 0.9}s`,
+            animationDuration: `${10 + (i % 4) * 3}s`,
+          }}
+        />
+      ))}
+      {/* brass stars, twinkling on their own timings */}
+      {Array.from({ length: stars }).map((_, i) => (
+        <span
+          key={`s-${i}`}
+          className="absolute font-display text-gold/35 animate-twinkle"
+          style={{
+            left: `${12 + (i * 61) % 78}%`,
+            top: `${10 + (i * 43) % 76}%`,
+            fontSize: `${7 + (i % 3) * 3}px`,
+            animationDelay: `${i * 1.3}s`,
+            animationDuration: "6s",
+          }}
+        >
+          ✦
+        </span>
+      ))}
+      {/* a lone ember rising slowly */}
+      <motion.span
+        className="absolute h-1 w-1 rounded-full bg-candle"
+        style={{ left: "50%", boxShadow: "0 0 6px 1px rgba(212,166,90,0.45)" }}
+        initial={{ bottom: "-4%", opacity: 0 }}
+        animate={{ bottom: ["-4%", "104%"], x: [0, 24, -16, 20], opacity: [0, 0.7, 0.4, 0] }}
+        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+      />
+    </div>
+  );
+}
+
 /* a butterfly wandering the scene — fine gold line-work, wings truly flapping */
 function HeroButterfly({ top, delay, dur, tint }: { top: string; delay: number; dur: number; tint: string }) {
   return (
@@ -191,14 +237,35 @@ function Hero() {
           animate={{ opacity: [0.55, 0.9, 0.5, 0.85, 0.6], scale: [1, 1.06, 0.98, 1.04, 1] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
         />
-        {/* the fairy-light jar pulses — a warm glow over the lower-right */}
+        {/* the fairy-light jar comes alive — a warm light laid over the painted
+            jar with a screen blend, flickering slowly dim-to-bright. kept tight
+            in the lower-right corner so it never sits behind the timer. */}
         <motion.div
           aria-hidden
-          className="pointer-events-none absolute bottom-[16%] right-[10%] h-44 w-44 rounded-full"
-          style={{ background: "radial-gradient(circle, rgba(212,166,90,0.24), transparent 62%)" }}
-          animate={{ opacity: [0.7, 1, 0.65, 0.95, 0.75] }}
-          transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
+          className="pointer-events-none absolute bottom-[13%] right-[6%] h-28 w-24 rounded-full"
+          style={{
+            background: "radial-gradient(circle, rgba(232,184,113,0.5), rgba(212,166,90,0.18) 45%, transparent 68%)",
+            mixBlendMode: "screen",
+          }}
+          animate={{ opacity: [0.4, 0.72, 0.5, 0.68, 0.45], scale: [1, 1.03, 0.99, 1.02, 1] }}
+          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
         />
+        {/* a few individual fairy lights winking slowly inside the jar */}
+        {[...Array(5)].map((_, i) => (
+          <motion.span
+            key={`jar-${i}`}
+            aria-hidden
+            className="pointer-events-none absolute h-1 w-1 rounded-full bg-[#F3E9D7]"
+            style={{
+              right: `${7 + ((i * 6) % 10)}%`,
+              bottom: `${13 + ((i * 8) % 12)}%`,
+              mixBlendMode: "screen",
+              boxShadow: "0 0 6px 2px rgba(232,184,113,0.6)",
+            }}
+            animate={{ opacity: [0.2, 0.85, 0.35, 0.7, 0.25] }}
+            transition={{ duration: 4.5 + (i % 3) * 1.2, repeat: Infinity, delay: i * 0.8, ease: "easeInOut" }}
+          />
+        ))}
 
         {/* a rose petal or two lets go and drifts down through the scene */}
         {[0, 1].map((i) => (
@@ -399,17 +466,19 @@ function CurrentDrop() {
   const items = products.filter((p) => !p.vault);
   return (
     <section id="drop" className="relative scroll-mt-16 px-5 pb-24 pt-6 sm:px-12 sm:pt-10">
-      <div className="mx-auto max-w-6xl">
+      <AmbientLife dust={8} stars={3} />
+
+      <div className="relative mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1.6, ease: EASE }}
-          className="mb-10 flex items-baseline gap-5 sm:mb-14"
+          className="relative mb-10 sm:mb-14"
         >
-          <p className="overline-label shrink-0">The Current Drop</p>
-          <span className="hairline flex-1 opacity-50" />
-          <p className="shrink-0 font-hand text-lg text-cream/60">ten pieces, one of each</p>
+          <h2 className="font-display text-4xl font-bold not-italic leading-tight text-cream sm:text-5xl">
+            Trending Now
+          </h2>
         </motion.div>
 
         <div className="grid grid-cols-2 gap-x-5 gap-y-14 md:grid-cols-3 md:gap-x-8 md:gap-y-16 lg:grid-cols-4">
@@ -829,7 +898,8 @@ function Letters() {
   ];
   return (
     <section className="relative overflow-hidden px-6 py-32 sm:px-12">
-      <div className="mx-auto max-w-5xl">
+      <AmbientLife dust={7} stars={3} />
+      <div className="relative mx-auto max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -927,7 +997,8 @@ function AboutStrip() {
       className="relative overflow-hidden px-6 py-36 sm:px-12"
       style={{ background: "linear-gradient(180deg, rgba(74,53,86,0.25), rgba(22,15,23,1))" }}
     >
-      <div className="mx-auto max-w-4xl">
+      <AmbientLife dust={9} stars={4} />
+      <div className="relative mx-auto max-w-4xl">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
