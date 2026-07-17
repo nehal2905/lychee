@@ -56,16 +56,18 @@ function Hero() {
 
   return (
     <section
-      className="relative overflow-hidden pb-16"
+      className="relative overflow-hidden pb-12"
       style={{
-        /* opaque behind the artwork and countdown, then a long dissolve that
-           lets the page's paper texture surface gradually — no tonal step */
-        background: "linear-gradient(180deg, #221724 0%, #221724 58%, rgba(34,23,36,0) 100%)",
+        /* opaque behind the stage, then a short dissolve so the paper
+           texture surfaces gradually below the fold — no tonal step */
+        background: "linear-gradient(180deg, #221724 0%, #221724 86%, rgba(34,23,36,0) 100%)",
       }}
     >
-      {/* the painted scene — the whole artwork, full width */}
+      {/* the stage — locked to exactly one screen; the artwork fills it,
+          never the other way around. swap the art, the layout holds. */}
       <motion.div
-        className="relative mx-auto max-w-xl"
+        className="relative mx-auto"
+        style={{ height: "calc(100svh - 3.5rem)" }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 2.4, ease: EASE }}
@@ -74,13 +76,13 @@ function Hero() {
           <img
             src="/hero.png?v=3"
             alt="A candlelit desk before an arched window at dusk — dark roses, vintage jewellery, a melting candle, and a jar of fairy lights"
-            className="h-auto w-full"
+            className="h-full w-full object-cover object-[50%_35%] md:object-contain"
             onError={() => setArtOk(false)}
           />
         ) : (
           /* graceful stand-in until /hero.png is added to public/ */
           <div
-            className="relative h-[56svh] w-full overflow-hidden sm:h-[64svh]"
+            className="relative h-full w-full overflow-hidden"
             style={{ background: "radial-gradient(ellipse 120% 80% at 60% 10%, #8C6B72 0%, #4A3556 34%, #221724 80%)" }}
           >
             <div
@@ -148,19 +150,19 @@ function Hero() {
 
         {/* the scene never ends — it dissolves into the page's own dusk */}
         <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-48"
-          style={{ background: "linear-gradient(180deg, transparent, rgba(34,23,36,0.55) 55%, #221724)" }}
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-44"
+          style={{ background: "linear-gradient(180deg, transparent, rgba(34,23,36,0.5) 55%, #221724)" }}
         />
-      </motion.div>
 
-      {/* the countdown floats ON the artwork — glass over the candlelit desk */}
-      <motion.div
-        className="relative z-10 -mt-28 flex flex-col items-center px-6 text-center"
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 2, delay: 0.8, ease: EASE }}
-      >
-        <Countdown />
+        {/* the countdown floats at the stage's foot — glass over the velvet desk */}
+        <motion.div
+          className="absolute inset-x-0 bottom-4 z-10 flex justify-center px-6"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 2, delay: 0.8, ease: EASE }}
+        >
+          <Countdown />
+        </motion.div>
       </motion.div>
 
       <EasterEggModal keyName="moon" open={moonOpen} onClose={() => setMoonOpen(false)} />
