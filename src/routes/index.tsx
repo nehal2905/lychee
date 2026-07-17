@@ -74,7 +74,7 @@ function Hero() {
       >
         {artOk ? (
           <img
-            src="/hero.png?v=3"
+            src="/hero.png?v=4"
             alt="A candlelit desk before an arched window at dusk — dark roses, vintage jewellery, a melting candle, and a jar of fairy lights"
             className="h-full w-full object-cover object-[50%_35%] md:object-contain"
             onError={() => setArtOk(false)}
@@ -129,7 +129,7 @@ function Hero() {
         <button
           onClick={tapMoon}
           aria-label="The moon"
-          className={`absolute z-20 h-24 w-24 -translate-y-1/2 rounded-full ${artOk ? "right-[25%] top-[29%]" : "right-[18%] top-[20%]"}`}
+          className={`absolute z-20 h-28 w-28 -translate-y-1/2 rounded-full ${artOk ? "right-[30%] top-[38%]" : "right-[18%] top-[20%]"}`}
         >
           {!keys.moon && (
             <span
@@ -191,26 +191,44 @@ function ArchiveShelf() {
     { name: "Rings", sub: "One of Each, Never Two", img: "/ring.png", pos: "50% 45%", to: "#drop" },
     { name: "Earrings", sub: "Pairs That Found Each Other", img: "/earring.png", pos: "50% 42%", to: "#drop" },
     { name: "Bracelets", sub: "Clasped Through Centuries", img: "/locket.png", pos: "50% 46%", to: "#drop" },
-    { name: "Mystery Jars", sub: "The Piece Chooses You", img: "/hero.png?v=3", pos: "76% 82%", to: "/mystery-jar" },
-    { name: "One of One", sub: "Waiting to Be Inherited", img: "/hero.png?v=3", pos: "32% 86%", to: "#drop" },
+    { name: "Mystery Jars", sub: "The Piece Chooses You", img: "/hero.png?v=4", pos: "76% 82%", to: "/mystery-jar" },
+    { name: "One of One", sub: "Waiting to Be Inherited", img: "/hero.png?v=4", pos: "32% 86%", to: "#drop" },
   ];
   return (
-    <section id="shelf" className="relative scroll-mt-16 pt-7">
-      {/* ——— Explore the Archive ——— */}
+    <section id="shelf" className="relative scroll-mt-16 overflow-hidden py-12">
+      {/* the dark collections band — drop an image at /collections.png to
+          dress it; it stays heavily darkened so the cards keep the light */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-[#150E16]" />
+        <div
+          className="absolute inset-0 opacity-50"
+          style={{ backgroundImage: "url(/collections.png)", backgroundSize: "cover", backgroundPosition: "center" }}
+        />
+        <div className="absolute inset-0 bg-[#150E16]/60" />
+        {/* fade the band's edges into the page so there is no hard break */}
+        <div
+          className="absolute inset-0"
+          style={{ background: "linear-gradient(180deg, #221724 0%, transparent 15%, transparent 85%, #221724 100%)" }}
+        />
+      </div>
+
+      {/* Shop by Collections — left-aligned, a rule trailing to the right */}
       <motion.div
-        className="mx-auto flex max-w-md items-center gap-5 px-6"
+        className="px-6 sm:px-12"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 1.8, ease: EASE }}
       >
-        <span className="hairline flex-1" />
-        <h2 className="shrink-0 font-display text-xl italic text-cream sm:text-2xl">Explore the Archive</h2>
-        <span className="hairline flex-1" />
+        <p className="overline-label">The Collections</p>
+        <div className="mt-3 flex items-center gap-5">
+          <h2 className="shrink-0 font-display text-3xl italic text-cream sm:text-4xl">Shop by Collections</h2>
+          <span className="hairline flex-1" />
+        </div>
       </motion.div>
 
       <div
-        className="mt-7 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-6 pt-2 sm:px-12 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-6 pt-2 sm:px-12 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {cats.map((c, i) => (
           <motion.div

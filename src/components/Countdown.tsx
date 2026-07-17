@@ -24,11 +24,11 @@ export function Countdown() {
 
   return (
     <div
-      className="relative inline-block overflow-hidden px-7 py-3.5 sm:px-11 sm:py-4.5"
+      className="relative inline-block overflow-hidden px-5 py-2.5 sm:px-9 sm:py-3.5"
       style={{
-        border: "1px solid rgba(184,148,90,0.72)",
-        borderRadius: "30px",
-        boxShadow: "0 0 40px rgba(212,166,90,0.16)",
+        border: "1px solid rgba(184,148,90,0.7)",
+        borderRadius: "26px",
+        boxShadow: "0 0 34px rgba(212,166,90,0.14)",
       }}
     >
       {/* a slow light travels the frame every few seconds */}
@@ -58,14 +58,14 @@ export function Countdown() {
       {/* inner engraved hairline */}
       <span className="pointer-events-none absolute inset-[5px] rounded-[29px] border border-gold/25" />
       {/* small stars set into the frame's sides */}
-      <span className="absolute -left-[5px] top-1/2 -translate-y-1/2 bg-background px-0.5 font-display text-[9px] text-gold">✦</span>
-      <span className="absolute -right-[5px] top-1/2 -translate-y-1/2 bg-background px-0.5 font-display text-[9px] text-gold">✦</span>
+      <span className="absolute -left-[7px] top-1/2 -translate-y-1/2 font-display text-[9px] text-gold" style={{ textShadow: "0 0 4px rgba(0,0,0,0.9)" }}>✦</span>
+      <span className="absolute -right-[7px] top-1/2 -translate-y-1/2 font-display text-[9px] text-gold" style={{ textShadow: "0 0 4px rgba(0,0,0,0.9)" }}>✦</span>
 
-      <div className="small-caps text-xs tracking-[0.3em] text-cream" style={{ textShadow: "0 1px 6px rgba(0,0,0,0.8)" }}>
+      <div className="small-caps text-[10px] tracking-[0.3em] text-cream" style={{ textShadow: "0 1px 6px rgba(0,0,0,0.85)" }}>
         {lead} · {when}
       </div>
 
-      <div className="mt-2 flex items-start justify-center gap-2 font-display text-parchment sm:gap-3" style={{ textShadow: "0 1px 8px rgba(0,0,0,0.85)" }}>
+      <div className="mt-1.5 flex items-start justify-center gap-1.5 font-display text-parchment sm:gap-2.5" style={{ textShadow: "0 1px 8px rgba(0,0,0,0.9)" }}>
         <Unit v={t.d} l="Days" />
         <Colon />
         <Unit v={t.h} l="Hrs" />
@@ -79,14 +79,14 @@ export function Countdown() {
 }
 
 function Colon() {
-  return <span className="pt-0.5 text-xl text-gold/70 sm:text-2xl">:</span>;
+  return <span className="pt-0.5 text-lg text-gold/70 sm:text-xl">:</span>;
 }
 
 function Unit({ v, l }: { v: number; l: string }) {
   return (
-    <span className="flex w-8 flex-col items-center sm:w-10">
-      <span className="text-2xl tabular-nums leading-none sm:text-3xl">{v.toString().padStart(2, "0")}</span>
-      <span className="mt-1 small-caps text-[9px] tracking-[0.28em] text-cream/70">{l}</span>
+    <span className="flex w-7 flex-col items-center sm:w-9">
+      <span className="text-xl tabular-nums leading-none sm:text-2xl">{v.toString().padStart(2, "0")}</span>
+      <span className="mt-1 small-caps text-[8px] tracking-[0.28em] text-cream/70">{l}</span>
     </span>
   );
 }
