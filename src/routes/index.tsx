@@ -195,23 +195,7 @@ function ArchiveShelf() {
     { name: "One of One", sub: "Waiting to Be Inherited", img: "/hero.png?v=4", pos: "32% 86%", to: "#drop" },
   ];
   return (
-    <section id="shelf" className="relative scroll-mt-16 overflow-hidden py-12">
-      {/* the dark collections band — drop an image at /collections.png to
-          dress it; it stays heavily darkened so the cards keep the light */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[#150E16]" />
-        <div
-          className="absolute inset-0 opacity-50"
-          style={{ backgroundImage: "url(/collections.png)", backgroundSize: "cover", backgroundPosition: "center" }}
-        />
-        <div className="absolute inset-0 bg-[#150E16]/60" />
-        {/* fade the band's edges into the page so there is no hard break */}
-        <div
-          className="absolute inset-0"
-          style={{ background: "linear-gradient(180deg, #221724 0%, transparent 15%, transparent 85%, #221724 100%)" }}
-        />
-      </div>
-
+    <section id="shelf" className="relative scroll-mt-16 py-12">
       {/* Find Your Perfect Match — bold serif, quiet subtitle beneath */}
       <motion.div
         className="px-6 sm:px-12"
@@ -244,9 +228,9 @@ function ArchiveShelf() {
               transition={{ duration: 5 + (i % 3), repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.99 }}
-              className="relative block w-[62vw] max-w-[240px] overflow-hidden rounded-2xl px-7 pb-8 pt-7 text-center backdrop-blur-sm sm:w-[220px]"
+              className="relative block w-[62vw] max-w-[240px] overflow-hidden rounded-2xl px-7 pb-8 pt-7 text-center sm:w-[220px]"
               style={{
-                background: "linear-gradient(168deg, rgba(22,15,23,0.85), rgba(18,12,19,0.95))",
+                background: "linear-gradient(168deg, rgba(22,15,23,0.92), rgba(18,12,19,0.97))",
                 border: "1px solid rgba(184,148,90,0.4)",
                 outline: "1px solid rgba(184,148,90,0.15)",
                 outlineOffset: "3px",
