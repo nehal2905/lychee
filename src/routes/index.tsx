@@ -139,36 +139,21 @@ function Hero() {
           />
         ))}
 
-        {/* the scene settles into the page */}
+        {/* the scene never ends — it dissolves into the page's own dusk */}
         <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-24"
-          style={{ background: "linear-gradient(180deg, transparent, #221724)" }}
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-48"
+          style={{ background: "linear-gradient(180deg, transparent, rgba(34,23,36,0.55) 55%, #221724)" }}
         />
       </motion.div>
 
-      {/* countdown in its ornate frame, then the invitation */}
+      {/* the countdown floats ON the artwork — glass over the candlelit desk */}
       <motion.div
-        className="relative z-10 -mt-12 flex flex-col items-center gap-4 px-6 text-center"
+        className="relative z-10 -mt-28 flex flex-col items-center px-6 text-center"
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 2, delay: 0.8, ease: EASE }}
       >
         <Countdown />
-        <a href="#shelf" className="group flex flex-col items-center gap-2.5 font-display text-lg italic text-cream transition-colors duration-500 hover:text-parchment">
-          Explore the Archive
-          <span className="hairline w-44 transition-[width] duration-700 group-hover:w-56" />
-        </a>
-        <motion.a
-          href="#shelf"
-          aria-label="Scroll to the drop"
-          className="text-gold/60"
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round">
-            <path d="M5 9 l7 7 l7 -7" />
-          </svg>
-        </motion.a>
       </motion.div>
 
       <EasterEggModal keyName="moon" open={moonOpen} onClose={() => setMoonOpen(false)} />
@@ -177,122 +162,92 @@ function Hero() {
 }
 
 /* ---------------------------- ARCHIVE SHELF ----------------------------- */
-/* six antique catalog entries on a horizontal shelf — swipe along it,
-   tap one, and it carries you into the drop. no thumbnails; typography
-   and atmosphere do the selling. */
-function ShelfIcon({ name }: { name: string }) {
-  const cls = "h-8 w-8 text-gold/80";
-  const sw = 0.9;
-  switch (name) {
-    case "rings":
-      return (
-        <svg viewBox="0 0 32 32" className={cls} fill="none" stroke="currentColor" strokeWidth={sw}>
-          <circle cx="16" cy="19" r="8" />
-          <path d="M12.5 12 L16 6.5 L19.5 12 Z" />
-        </svg>
-      );
-    case "necklaces":
-      return (
-        <svg viewBox="0 0 32 32" className={cls} fill="none" stroke="currentColor" strokeWidth={sw}>
-          <path d="M6 6 C 8 16 12 20 16 21 C 20 20 24 16 26 6" />
-          <path d="M16 21 v3" />
-          <path d="M16 24 l-2.5 3.5 L16 30.5 l2.5 -3 Z" />
-        </svg>
-      );
-    case "earrings":
-      return (
-        <svg viewBox="0 0 32 32" className={cls} fill="none" stroke="currentColor" strokeWidth={sw}>
-          <path d="M10 4 q-4 5 0 8 M22 4 q4 5 0 8" />
-          <path d="M10 12 v4 M22 12 v4" strokeWidth="0.6" />
-          <path d="M10 16 c-3 4 -3 8 0 10 c3 -2 3 -6 0 -10 z M22 16 c-3 4 -3 8 0 10 c3 -2 3 -6 0 -10 z" />
-        </svg>
-      );
-    case "bracelets":
-      return (
-        <svg viewBox="0 0 32 32" className={cls} fill="none" stroke="currentColor" strokeWidth={sw}>
-          <path d="M26 16 a10 10 0 1 1 -3 -7" />
-          <circle cx="25" cy="8" r="2.2" />
-        </svg>
-      );
-    case "lockets":
-      return (
-        <svg viewBox="0 0 32 32" className={cls} fill="none" stroke="currentColor" strokeWidth={sw}>
-          <path d="M16 3 v5" />
-          <ellipse cx="16" cy="10" rx="2" ry="2.5" />
-          <ellipse cx="16" cy="21" rx="8" ry="9" />
-          <path d="M12 21 q4 -6 8 0" strokeWidth="0.6" />
-        </svg>
-      );
-    case "heirlooms":
-      return (
-        <svg viewBox="0 0 32 32" className={cls} fill="none" stroke="currentColor" strokeWidth={sw}>
-          <rect x="5" y="14" width="22" height="13" rx="1.5" />
-          <path d="M5 14 c0 -6 22 -6 22 0" />
-          <path d="M16 18 v5 M13.5 20.5 h5" strokeWidth="0.7" />
-        </svg>
-      );
-    default:
-      return null;
-  }
-}
-
+/* the archive opens directly beneath the painting: a flanked heading,
+   then six catalog cards on a swipeable shelf — each with a jewellery
+   vignette in a gold medallion, floating gently like it's underwater. */
 function ArchiveShelf() {
   const cats = [
-    { name: "Rings", sub: "One of Each, Never Two", icon: "rings" },
-    { name: "Necklaces", sub: "Collected Across Europe", icon: "necklaces" },
-    { name: "Earrings", sub: "Pairs That Found Each Other", icon: "earrings" },
-    { name: "Bracelets", sub: "Clasped Through Centuries", icon: "bracelets" },
-    { name: "Lockets", sub: "Each Keeps a Secret", icon: "lockets" },
-    { name: "Heirlooms", sub: "Waiting to Be Inherited", icon: "heirlooms" },
+    { name: "Necklaces", sub: "Collected Across Europe", img: "/pendant.png", pos: "50% 42%", to: "#drop" },
+    { name: "Rings", sub: "One of Each, Never Two", img: "/ring.png", pos: "50% 45%", to: "#drop" },
+    { name: "Earrings", sub: "Pairs That Found Each Other", img: "/earring.png", pos: "50% 42%", to: "#drop" },
+    { name: "Bracelets", sub: "Clasped Through Centuries", img: "/locket.png", pos: "50% 46%", to: "#drop" },
+    { name: "Mystery Jars", sub: "The Piece Chooses You", img: "/hero.png?v=2", pos: "76% 82%", to: "/mystery-jar" },
+    { name: "One of One", sub: "Waiting to Be Inherited", img: "/hero.png?v=2", pos: "32% 86%", to: "#drop" },
   ];
   return (
-    <section id="shelf" className="relative scroll-mt-16 pt-6">
-      <motion.p
-        className="overline-label px-6 sm:px-12"
+    <section id="shelf" className="relative scroll-mt-16 pt-7">
+      {/* ——— Explore the Archive ——— */}
+      <motion.div
+        className="mx-auto flex max-w-md items-center gap-5 px-6"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 1.6, ease: EASE }}
+        transition={{ duration: 1.8, ease: EASE }}
       >
-        Shop by Category
-      </motion.p>
+        <span className="hairline flex-1" />
+        <h2 className="shrink-0 font-display text-xl italic text-cream sm:text-2xl">Explore the Archive</h2>
+        <span className="hairline flex-1" />
+      </motion.div>
 
       <div
-        className="mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-6 pt-2 sm:px-12 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="mt-7 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-6 pt-2 sm:px-12 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {cats.map((c, i) => (
-          <motion.a
+          <motion.div
             key={c.name}
-            href="#drop"
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            whileHover={{ scale: 1.02, y: -4 }}
-            whileTap={{ scale: 0.99 }}
             transition={{ duration: 0.9, delay: (i % 6) * 0.08, ease: EASE }}
-            className={`relative shrink-0 snap-center overflow-hidden rounded-2xl px-7 py-8 backdrop-blur-sm ${i % 2 ? "mt-4" : ""} w-[62vw] max-w-[240px] sm:w-[220px]`}
-            style={{
-              background: "linear-gradient(168deg, rgba(22,15,23,0.85), rgba(18,12,19,0.95))",
-              border: "1px solid rgba(184,148,90,0.4)",
-              outline: "1px solid rgba(184,148,90,0.15)",
-              outlineOffset: "3px",
-              boxShadow: "inset 0 0 26px rgba(0,0,0,0.5), 0 8px 26px rgba(0,0,0,0.35)",
-              transition: "box-shadow 0.7s cubic-bezier(0.22,1,0.36,1)",
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "inset 0 0 26px rgba(0,0,0,0.5), 0 0 30px rgba(212,166,90,0.18)"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "inset 0 0 26px rgba(0,0,0,0.5), 0 8px 26px rgba(0,0,0,0.35)"; }}
+            className={`shrink-0 snap-center ${i % 2 ? "mt-4" : ""}`}
           >
-            {/* corner flourishes */}
-            <span className="absolute left-2.5 top-2.5 h-3 w-3 border-l border-t border-gold/50" />
-            <span className="absolute right-2.5 top-2.5 h-3 w-3 border-r border-t border-gold/50" />
-            <span className="absolute bottom-2.5 left-2.5 h-3 w-3 border-b border-l border-gold/50" />
-            <span className="absolute bottom-2.5 right-2.5 h-3 w-3 border-b border-r border-gold/50" />
+            <motion.a
+              href={c.to}
+              animate={{ y: [0, -5, 0] }}
+              transition={{ duration: 5 + (i % 3), repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.99 }}
+              className="relative block w-[62vw] max-w-[240px] overflow-hidden rounded-2xl px-7 pb-8 pt-7 text-center backdrop-blur-sm sm:w-[220px]"
+              style={{
+                background: "linear-gradient(168deg, rgba(22,15,23,0.85), rgba(18,12,19,0.95))",
+                border: "1px solid rgba(184,148,90,0.4)",
+                outline: "1px solid rgba(184,148,90,0.15)",
+                outlineOffset: "3px",
+                boxShadow: "inset 0 0 26px rgba(0,0,0,0.5), 0 8px 26px rgba(0,0,0,0.35)",
+                transition: "box-shadow 0.7s cubic-bezier(0.22,1,0.36,1)",
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "inset 0 0 26px rgba(0,0,0,0.5), 0 0 30px rgba(212,166,90,0.2)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "inset 0 0 26px rgba(0,0,0,0.5), 0 8px 26px rgba(0,0,0,0.35)"; }}
+            >
+              {/* corner flourishes */}
+              <span className="absolute left-2.5 top-2.5 h-3 w-3 border-l border-t border-gold/50" />
+              <span className="absolute right-2.5 top-2.5 h-3 w-3 border-r border-t border-gold/50" />
+              <span className="absolute bottom-2.5 left-2.5 h-3 w-3 border-b border-l border-gold/50" />
+              <span className="absolute bottom-2.5 right-2.5 h-3 w-3 border-b border-r border-gold/50" />
 
-            <ShelfIcon name={c.icon} />
-            <h3 className="mt-4 font-display text-2xl italic text-cream">{c.name}</h3>
-            <span className="hairline mt-2.5 block w-10 opacity-60" />
-            <p className="mt-2.5 small-caps text-[10px] tracking-[0.26em] text-haze">{c.sub}</p>
-          </motion.a>
+              {/* jewellery vignette in a gold medallion */}
+              <span
+                className="relative mx-auto block h-24 w-24 overflow-hidden rounded-full"
+                style={{
+                  border: "1px solid rgba(184,148,90,0.55)",
+                  boxShadow: "0 0 22px rgba(0,0,0,0.55), inset 0 0 16px rgba(0,0,0,0.5)",
+                }}
+              >
+                <img
+                  src={c.img}
+                  alt=""
+                  className="h-full w-full object-cover"
+                  style={{ objectPosition: c.pos }}
+                  loading="lazy"
+                />
+                <span className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_35%_30%,transparent_45%,rgba(10,5,10,0.55))]" />
+              </span>
+
+              <h3 className="mt-4 font-display text-2xl italic text-cream">{c.name}</h3>
+              <span className="hairline mx-auto mt-2.5 block w-10 opacity-60" />
+              <p className="mt-2.5 small-caps text-[10px] tracking-[0.26em] text-haze">{c.sub}</p>
+            </motion.a>
+          </motion.div>
         ))}
       </div>
 

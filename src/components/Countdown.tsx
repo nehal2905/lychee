@@ -24,12 +24,13 @@ export function Countdown() {
 
   return (
     <div
-      className="relative inline-block overflow-hidden px-8 py-4.5 sm:px-14 sm:py-6"
+      className="relative inline-block overflow-hidden px-8 py-4.5 backdrop-blur-md sm:px-14 sm:py-6"
       style={{
         border: "1px solid rgba(184,148,90,0.72)",
         borderRadius: "34px",
-        background: "radial-gradient(ellipse at 50% 0%, rgba(184,148,90,0.08), rgba(22,15,23,0.45))",
-        boxShadow: "0 0 44px rgba(212,166,90,0.18), inset 0 0 26px rgba(0,0,0,0.4)",
+        backgroundColor: "rgba(22,15,23,0.42)",
+        backgroundImage: "radial-gradient(ellipse at 50% 0%, rgba(184,148,90,0.09), transparent 70%)",
+        boxShadow: "0 0 44px rgba(212,166,90,0.18), 0 10px 34px rgba(0,0,0,0.45), inset 0 0 26px rgba(0,0,0,0.3)",
       }}
     >
       {/* a slow light travels the frame every few seconds */}
