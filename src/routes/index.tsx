@@ -72,7 +72,7 @@ function Hero() {
       >
         {artOk ? (
           <img
-            src="/hero.png?v=2"
+            src="/hero.png?v=3"
             alt="A candlelit desk before an arched window at dusk — dark roses, vintage jewellery, a melting candle, and a jar of fairy lights"
             className="h-auto w-full"
             onError={() => setArtOk(false)}
@@ -127,7 +127,7 @@ function Hero() {
         <button
           onClick={tapMoon}
           aria-label="The moon"
-          className={`absolute z-20 h-24 w-24 -translate-y-1/2 rounded-full ${artOk ? "right-[23%] top-[32%]" : "right-[18%] top-[20%]"}`}
+          className={`absolute z-20 h-24 w-24 -translate-y-1/2 rounded-full ${artOk ? "right-[25%] top-[29%]" : "right-[18%] top-[20%]"}`}
         >
           {!keys.moon && (
             <span
@@ -178,8 +178,8 @@ function ArchiveShelf() {
     { name: "Rings", sub: "One of Each, Never Two", img: "/ring.png", pos: "50% 45%", to: "#drop" },
     { name: "Earrings", sub: "Pairs That Found Each Other", img: "/earring.png", pos: "50% 42%", to: "#drop" },
     { name: "Bracelets", sub: "Clasped Through Centuries", img: "/locket.png", pos: "50% 46%", to: "#drop" },
-    { name: "Mystery Jars", sub: "The Piece Chooses You", img: "/hero.png?v=2", pos: "76% 82%", to: "/mystery-jar" },
-    { name: "One of One", sub: "Waiting to Be Inherited", img: "/hero.png?v=2", pos: "32% 86%", to: "#drop" },
+    { name: "Mystery Jars", sub: "The Piece Chooses You", img: "/hero.png?v=3", pos: "76% 82%", to: "/mystery-jar" },
+    { name: "One of One", sub: "Waiting to Be Inherited", img: "/hero.png?v=3", pos: "32% 86%", to: "#drop" },
   ];
   return (
     <section id="shelf" className="relative scroll-mt-16 pt-7">
