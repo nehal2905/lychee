@@ -154,9 +154,10 @@ function Hero() {
           style={{ background: "linear-gradient(180deg, transparent, rgba(34,23,36,0.5) 55%, #221724)" }}
         />
 
-        {/* the countdown floats at the stage's foot — glass over the velvet desk */}
+        {/* the countdown floats at the stage's foot — lifted clear of the
+            bottom nav on mobile so it is always fully visible */}
         <motion.div
-          className="absolute inset-x-0 bottom-4 z-10 flex justify-center px-6"
+          className="absolute inset-x-0 bottom-24 z-10 flex justify-center px-6 md:bottom-8"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 2, delay: 0.8, ease: EASE }}
