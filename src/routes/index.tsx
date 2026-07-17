@@ -212,7 +212,7 @@ function ArchiveShelf() {
         />
       </div>
 
-      {/* Shop by Collections — left-aligned, a rule trailing to the right */}
+      {/* Find Your Perfect Match — bold serif, quiet subtitle beneath */}
       <motion.div
         className="px-6 sm:px-12"
         initial={{ opacity: 0 }}
@@ -220,11 +220,10 @@ function ArchiveShelf() {
         viewport={{ once: true }}
         transition={{ duration: 1.8, ease: EASE }}
       >
-        <p className="overline-label">The Collections</p>
-        <div className="mt-3 flex items-center gap-5">
-          <h2 className="shrink-0 font-display text-3xl italic text-cream sm:text-4xl">Shop by Collections</h2>
-          <span className="hairline flex-1" />
-        </div>
+        <h2 className="font-display text-4xl font-bold not-italic leading-tight text-cream sm:text-5xl">
+          Find Your Perfect Match
+        </h2>
+        <p className="mt-2 font-display text-lg italic text-gold/85 sm:text-xl">Shop by Categories</p>
       </motion.div>
 
       <div
