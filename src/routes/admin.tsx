@@ -15,7 +15,7 @@ function Admin() {
           <div>
             <p className="overline-label">The Keeper's Desk</p>
             <h1 className="display-xl mt-4 text-5xl sm:text-6xl">The Ledger.</h1>
-            <p className="mt-3 font-hand text-base text-haze">(placeholder — not wired to a database)</p>
+            <p className="mt-3 font-hand text-base text-haze">(placeholder, not wired to a database)</p>
           </div>
           <div className="flex gap-6">
             <button
@@ -36,7 +36,7 @@ function Admin() {
         {tab === "add" ? (
           <form
             className="paper deckle space-y-8 p-8 sm:p-12"
-            onSubmit={(e) => { e.preventDefault(); alert("placeholder — connect Supabase to persist."); }}
+            onSubmit={(e) => { e.preventDefault(); alert("placeholder: connect Supabase to persist."); }}
           >
             <p className="font-type text-[10px] small-caps tracking-[0.34em] text-wood">Entry of a New Piece</p>
             <div className="grid gap-x-8 gap-y-7 sm:grid-cols-2">
@@ -47,8 +47,8 @@ function Admin() {
               <Field label="era"><input placeholder="c. 1910" className="field-line-ink" /></Field>
               <Field label="drop">
                 <select className="field-line-ink appearance-none">
-                  <option>chapter one — twilight</option>
-                  <option>chapter two — dusk letters</option>
+                  <option>chapter one · twilight</option>
+                  <option>chapter two · dusk letters</option>
                 </select>
               </Field>
               <Field label="status">

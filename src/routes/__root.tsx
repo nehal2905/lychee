@@ -72,10 +72,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lychee Lore — Collect Beautiful Moments" },
+      { title: "Lychee Lore · Collect Beautiful Moments" },
       { name: "description", content: "A boutique of one-of-a-kind vintage jewellery. Every piece remembers." },
       { name: "author", content: "Lychee Lore" },
-      { property: "og:title", content: "Lychee Lore — Collect Beautiful Moments" },
+      { property: "og:title", content: "Lychee Lore · Collect Beautiful Moments" },
       { property: "og:description", content: "One-of-a-kind vintage jewellery, dropped in candlelit chapters." },
       { property: "og:type", content: "website" },
       { property: "og:image", content: "/logo.png?v=1" },

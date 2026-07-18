@@ -5,11 +5,11 @@ import { useState } from "react";
 export const Route = createFileRoute("/faq")({ component: FAQ });
 
 const faqs = [
-  { q: "How do I know it's really vintage?", a: "Every piece is hand-authenticated and ships with a small certificate. We date pieces conservatively — if we're not certain of the decade, we tell you." },
+  { q: "How do I know it's really vintage?", a: "Every piece is hand-authenticated and ships with a small certificate. We date pieces conservatively. If we're not certain of the decade, we tell you." },
   { q: "Shipping?", a: "Worldwide. India: 2–4 days. International: 7–12 days. You'll get a WhatsApp note with tracking the moment it leaves us." },
   { q: "How do I care for it?", a: "Vintage jewellery is delicate. Keep it dry, store it in the pouch we send, and let it be the last thing you put on and the first you take off." },
-  { q: "Returns?", a: "Because every piece is one of a kind, all adoptions are final. We help you choose with photos, videos, and honest answers before you buy — always ask us anything." },
-  { q: "Can I request a specific style?", a: "Yes — either try the Mystery Jar, or send us a WhatsApp note describing what you're hoping for. We'll write back when a match comes to us." },
+  { q: "Returns?", a: "Because every piece is one of a kind, all adoptions are final. We help you choose with photos, videos, and honest answers before you buy. Always ask us anything." },
+  { q: "Can I request a specific style?", a: "Yes. Either try the Mystery Jar, or send us a WhatsApp note describing what you're hoping for. We'll write back when a match comes to us." },
 ];
 
 const romans = ["I", "II", "III", "IV", "V"];
@@ -58,7 +58,7 @@ function FAQ() {
         </ul>
 
         <p className="mt-16 text-center font-hand text-xl text-haze">
-          Anything else — just write to us. We answer everything.
+          Anything else, just write to us. We answer everything.
         </p>
       </div>
     </section>

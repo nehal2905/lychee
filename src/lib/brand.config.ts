@@ -11,11 +11,11 @@ export const brand = {
 };
 
 export const copy = {
-  finalSale: "One of a kind — once it's yours, it's yours forever.",
+  finalSale: "One of a kind. Once it's yours, it's yours forever.",
   orderConfirmed: "Your treasures are being prepared with great care.",
   aboutLine: "Some souls understand each other in silence.",
   footerLine: "Growth is quiet, but it changes everything.",
-  dropLabel: "Next Drop — Friday 7PM",
+  dropLabel: "Next Drop · Friday 7PM",
 };
 
 // Countdown target — next Friday 7pm local
@@ -97,7 +97,7 @@ export const mysteryJar = {
   testimonials: [
     { quote: "I cried a little. It was exactly me.", name: "Anya" },
     { quote: "Opened it by candlelight. Perfect.", name: "Meera" },
-    { quote: "I would never have picked it — and that is why it fits.", name: "Sara" },
+    { quote: "I would never have picked it, and that is why it fits.", name: "Sara" },
     { quote: "The note inside made me write back to myself.", name: "Priya" },
     { quote: "A stranger's heirloom. Now mine.", name: "Leila" },
   ],

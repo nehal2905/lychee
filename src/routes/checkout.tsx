@@ -122,7 +122,7 @@ function Checkout() {
 
               {/* payment — UPI first */}
               <h2 className="mt-12 font-display text-2xl italic text-ink">And how the sum shall be settled,</h2>
-              <p className="mt-1 font-type text-[10px] tracking-[0.2em] text-wood/70">(Razorpay placeholder — no real charge)</p>
+              <p className="mt-1 font-type text-[10px] tracking-[0.2em] text-wood/70">(Razorpay placeholder, no real charge)</p>
               <div className="mt-6 space-y-0">
                 {["UPI", "Card", "Net Banking"].map((m) => (
                   <label key={m} className="flex cursor-pointer items-center gap-4 border-b border-wood/15 py-4 text-ink first:border-t">
@@ -137,7 +137,7 @@ function Checkout() {
 
             <div>
               <button className="btn-seal-plaque w-full py-5">
-                Pay Securely with Razorpay — ₹{total.toLocaleString("en-IN")}
+                Pay Securely with Razorpay · ₹{total.toLocaleString("en-IN")}
               </button>
               <p className="mt-3 flex items-center justify-center gap-2 small-caps text-[10px] tracking-[0.3em] text-haze">
                 <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 text-gold/70" fill="none" stroke="currentColor" strokeWidth="1.4">

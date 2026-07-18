@@ -505,7 +505,7 @@ function RitualForm({ onSeal, sealing }: { onSeal: () => void; sealing: boolean 
           }}
         >
           <p className="font-type text-[10px] small-caps tracking-[0.34em] text-wood">
-            Apothecary Order — Mystery Jar
+            Apothecary Order · Mystery Jar
           </p>
 
           <fieldset>
@@ -550,7 +550,7 @@ function RitualForm({ onSeal, sealing }: { onSeal: () => void; sealing: boolean 
                   onChange={(e) => setSize(e.target.value)}
                   className="field-line-ink appearance-none"
                 >
-                  <option value="">optional — leave blank if unsure</option>
+                  <option value="">optional, leave blank if unsure</option>
                   {mysteryJar.ringSizes.map((s) => (
                     <option key={s} value={s}>
                       US {s}
@@ -689,7 +689,7 @@ function PastJars() {
                 <p className="mt-4 font-hand text-[15px] leading-snug text-ink/90">
                   “{t.quote}”
                 </p>
-                <p className="mt-2 font-type text-[9px] tracking-[0.2em] text-ink/50">— {t.name}</p>
+                <p className="mt-2 font-type text-[9px] tracking-[0.2em] text-ink/50">{t.name}</p>
 
                 <AnimatePresence>
                   {active && (

@@ -111,7 +111,7 @@ function ProductPage() {
                   onClick={() => { addToCart(product.id); setCartOpen(true); }}
                   className="btn-seal-plaque flex-1"
                 >
-                  Add to Cart — ₹{product.price.toLocaleString("en-IN")}
+                  Add to Cart · ₹{product.price.toLocaleString("en-IN")}
                 </button>
               )}
               <button

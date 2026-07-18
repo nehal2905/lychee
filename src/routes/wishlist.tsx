@@ -26,9 +26,9 @@ function Wishlist() {
         {items.length === 0 ? (
           <div className="py-16 text-center">
             <p className="font-hand text-3xl leading-relaxed text-cream/60">
-              The cabinet is empty —
+              The cabinet is empty.
               <br />
-              the pieces you love live here.
+              The pieces you love live here.
             </p>
             <Link to="/" className="link-quiet mt-10 inline-block text-lg text-cream/80">Go Find One</Link>
           </div>

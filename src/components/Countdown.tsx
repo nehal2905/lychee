@@ -20,7 +20,7 @@ export function Countdown() {
     return () => clearInterval(i);
   });
 
-  const [lead, when] = copy.dropLabel.split("—").map((s) => s.trim());
+  const [lead, when] = copy.dropLabel.split("·").map((s) => s.trim());
 
   return (
     <div

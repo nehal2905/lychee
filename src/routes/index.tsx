@@ -163,7 +163,7 @@ function Hero() {
         {artOk ? (
           <img
             src="/hero.png?v=4"
-            alt="A candlelit desk before an arched window at dusk — dark roses, vintage jewellery, a melting candle, and a jar of fairy lights"
+            alt="A candlelit desk before an arched window at dusk, dark roses, vintage jewellery, a melting candle, and a jar of fairy lights"
             className="h-full w-full object-cover object-[50%_35%] md:object-contain"
             onError={() => setArtOk(false)}
           />
@@ -562,7 +562,7 @@ function LoreSection() {
               <p className="dropcap font-type text-[15px] leading-loose text-ink sm:text-base">
                 {featured.lore}
               </p>
-              <p className="mt-8 font-hand text-2xl text-wood">— found March, an estate sale, Bombay</p>
+              <p className="mt-8 font-hand text-2xl text-wood">found March, an estate sale, Bombay</p>
 
               {/* pressed dried flower */}
               <div className="absolute right-6 top-6 rotate-12 opacity-70">
@@ -724,7 +724,7 @@ function WhisperWishModal({ piece, onClose }: { piece: Product | null; onClose: 
             ) : (
               <>
                 <p className="mt-3 font-serif-body text-sm leading-relaxed text-ink/80">
-                  This one has found its person — but pieces like it sometimes find their way back to us.
+                  This one has found its person, but pieces like it sometimes find their way back to us.
                   Leave a whisper and we'll write to you if one does.
                 </p>
                 <form
@@ -902,7 +902,7 @@ function Letters() {
               <WaxSeal size={48} className="absolute -right-3 -top-3 z-[2]" rotate={i % 2 ? -12 : 8} />
               <div className="mb-3 text-sm tracking-[0.3em] text-[#8a6a2e]">★★★★★</div>
               <p className="font-type text-[14px] leading-relaxed text-ink">"{l.text}"</p>
-              <p className="mt-5 font-hand text-xl text-wood">— {l.by}</p>
+              <p className="mt-5 font-hand text-xl text-wood">{l.by}</p>
             </motion.div>
           ))}
         </div>
@@ -981,7 +981,7 @@ function AboutStrip() {
           <p className="overline-label">The Lore of Lychee</p>
           <p className="mt-10 font-display text-3xl italic leading-snug text-cream sm:text-5xl">
             We look for the pieces that carry a life inside them.
-            <span className="text-haze"> What we can't tell you, they will — quietly, over years.</span>
+            <span className="text-haze"> What we can't tell you, they will quietly, over years.</span>
           </p>
           <p className="mt-10 font-hand text-3xl text-candle">{copy.aboutLine}</p>
         </motion.div>

@@ -15,14 +15,14 @@ export const loreEntries: LoreEntry[] = [
     type: "letter",
     title: "The Unopened Letters",
     text: "found in a Bombay estate sale, tucked inside a bundle of unopened letters. she wrote to a soldier who never came home. the moonstone was still pinned to the last envelope.",
-    signoff: "— found March, an estate sale, Bombay",
+    signoff: "found March, an estate sale, Bombay",
   },
   {
     id: "always",
     type: "letter",
     title: "Always",
     text: "engraved 'always' on the inside of the band. we do not know whose promise it kept. the jeweller who resized it refused to polish the word away.",
-    signoff: "— from the keeper's notes",
+    signoff: "from the keeper's notes",
   },
   {
     id: "wednesday",
@@ -53,7 +53,7 @@ export const loreEntries: LoreEntry[] = [
     type: "letter",
     title: "A Wet Afternoon in Paris",
     text: "purchased on a wet afternoon in Paris, according to the receipt still folded inside the box. the ink has run, but the date survives: april, 1905.",
-    signoff: "— the receipt, translated",
+    signoff: "the receipt, translated",
   },
   {
     id: "forget-me-not",

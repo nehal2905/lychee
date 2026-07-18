@@ -43,7 +43,7 @@ export function CartDrawer() {
             <div className="flex-1 overflow-y-auto px-7">
               {items.length === 0 ? (
                 <p className="mt-16 text-center font-hand text-3xl text-cream/80">
-                  Your box is empty — for now.
+                  Your box is empty, for now.
                 </p>
               ) : (
                 <ul>

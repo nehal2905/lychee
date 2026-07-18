@@ -33,8 +33,8 @@ export function Nav() {
         className="sticky top-0 z-50"
         style={{
           background: "linear-gradient(180deg, rgba(10,6,11,0.97) 0%, rgba(14,9,16,0.94) 70%, rgba(14,9,16,0.88) 100%)",
-          borderBottom: "1px solid rgba(184,148,90,0.18)",
-          boxShadow: "0 10px 28px rgba(0,0,0,0.55)",
+          borderBottom: "2px solid rgba(212,166,90,0.45)",
+          boxShadow: "0 10px 28px rgba(0,0,0,0.55), 0 1px 0 rgba(232,220,197,0.1)",
         }}
       >
         <div className="mx-auto relative flex max-w-7xl items-center justify-between px-5 py-3.5 sm:px-8 sm:py-4">
@@ -43,9 +43,9 @@ export function Nav() {
               <button
                 aria-label="Go back"
                 onClick={goBack}
-                className="-ml-1 p-2 text-gold/75 transition-colors duration-500 hover:text-candle"
+                className="-ml-1 p-2 text-gold transition-colors duration-500 hover:text-candle"
               >
-                <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.85" strokeLinecap="round">
                   <path d="M14.5 5.5 L8 12 l6.5 6.5" />
                 </svg>
               </button>
@@ -53,9 +53,9 @@ export function Nav() {
             <button
               aria-label="Menu"
               onClick={() => setOpen(true)}
-              className="group p-1 text-gold/80 transition-colors duration-500 hover:text-candle"
+              className="group p-1 text-gold transition-colors duration-500 hover:text-candle"
             >
-              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round">
+              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.65" strokeLinecap="round">
                 <path d="M4 7.2 h15" />
                 <path d="M4 12 h11" />
                 <path d="M4 16.8 h13" className="transition-all duration-700 group-hover:opacity-60" />
@@ -90,7 +90,7 @@ export function Nav() {
               )}
             </span>
             <span className="flex flex-col items-start">
-              <span className="brand-mark-text font-display text-[1.35rem] italic lowercase tracking-[-0.02em] text-transparent sm:text-[1.65rem]">
+              <span className="brand-mark-text font-display text-[1.35rem] italic tracking-[-0.02em] text-transparent sm:text-[1.65rem]">
                 {brand.name}
               </span>
               <span className="mt-0.5 hidden font-type text-[8px] tracking-[0.38em] text-gold/55 small-caps sm:block">
@@ -104,7 +104,7 @@ export function Nav() {
               <Link
                 to="/"
                 aria-label="Exit to home"
-                className="p-1 font-display text-3xl leading-none text-gold/55 transition-colors duration-500 hover:text-candle"
+                className="p-1 font-display text-3xl leading-none text-gold transition-colors duration-500 hover:text-candle"
               >
                 ×
               </Link>
@@ -117,7 +117,7 @@ export function Nav() {
               aria-label="Wishlist"
               aria-current={onWishlist ? "page" : undefined}
               className={`relative font-display text-lg leading-none transition-colors duration-500 ${
-                onWishlist ? "text-candle" : "text-gold/55 hover:text-candle"
+                onWishlist ? "text-candle" : "text-gold hover:text-candle"
               }`}
               style={
                 onWishlist
@@ -135,13 +135,13 @@ export function Nav() {
             </Link>
             <button
               onClick={() => setCartOpen(true)}
-              className="relative text-gold/70 transition-colors duration-500 hover:text-candle"
+              className="relative text-gold transition-colors duration-500 hover:text-candle"
               aria-label="Cart"
             >
-              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.1">
+              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="4" y="10" width="16" height="9" />
                 <path d="M4 10 l2 -4 h12 l2 4" />
-                <path d="M10 14 h4" strokeLinecap="round" />
+                <path d="M10 14 h4" />
               </svg>
               {cart.length > 0 && (
                 <span className="absolute -right-1.5 -top-1.5 grid h-4 w-4 place-items-center rounded-full bg-oxblood font-serif-body text-[9px] text-parchment">
