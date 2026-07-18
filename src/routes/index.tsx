@@ -220,17 +220,33 @@ function Hero() {
           className={`absolute z-20 h-28 w-28 -translate-y-1/2 rounded-full ${artOk ? "right-[30%] top-[38%]" : "right-[18%] top-[20%]"}`}
         >
           {!keys.moon && (
-            <motion.span
-              aria-hidden
-              className="pointer-events-none absolute -inset-7 rounded-full"
-              style={{
-                background:
-                  "radial-gradient(circle, rgba(243,233,215,0.40), rgba(212,166,90,0.18) 45%, transparent 72%)",
-                mixBlendMode: "screen",
-              }}
-              animate={{ opacity: [0.55, 1, 0.6], scale: [1, 1.1, 1] }}
-              transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
-            />
+            <>
+              {/* soft moonlight bloom */}
+              <motion.span
+                aria-hidden
+                className="pointer-events-none absolute -inset-10 rounded-full"
+                style={{
+                  background:
+                    "radial-gradient(circle, rgba(243,233,215,0.70), rgba(212,166,90,0.30) 42%, transparent 74%)",
+                  mixBlendMode: "screen",
+                }}
+                animate={{ opacity: [0.7, 1, 0.75], scale: [1, 1.12, 1] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              />
+              {/* a luminous ring circling the moon — a lunar halo */}
+              <motion.span
+                aria-hidden
+                className="pointer-events-none absolute -inset-2 rounded-full"
+                style={{
+                  border: "1.5px solid rgba(243,233,215,0.75)",
+                  boxShadow:
+                    "0 0 16px rgba(243,233,215,0.6), inset 0 0 14px rgba(243,233,215,0.35)",
+                  mixBlendMode: "screen",
+                }}
+                animate={{ opacity: [0.55, 0.95, 0.6], scale: [1, 1.05, 1] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </>
           )}
         </button>
 
