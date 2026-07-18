@@ -187,7 +187,7 @@
    ============================================================ */
 .lace-frame {
   border: 26px solid transparent;
-  border-image: url("/lace-velvet.png") 100 fill round;
+  border-image: url("/lace-velvet.webp") 100 fill round;
 }
 @media (min-width: 640px) {
   .lace-frame { border-width: 48px; }
@@ -275,7 +275,7 @@
   position: relative;
   color: var(--ink);
   background-color: #e0c99a;
-  background-image: url("/crushed-paper.png");
+  background-image: url("/crushed-paper.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

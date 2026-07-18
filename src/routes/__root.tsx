@@ -86,6 +86,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "apple-touch-icon", href: "/logo.png?v=1" },
+      // preload the LCP hero (responsive AVIF) so it starts downloading immediately
+      {
+        rel: "preload",
+        as: "image",
+        href: "/hero-1024.avif",
+        type: "image/avif",
+        imagesrcset: "/hero-640.avif 640w, /hero-1024.avif 1024w",
+        imagesizes: "100vw",
+        fetchpriority: "high",
+      },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {

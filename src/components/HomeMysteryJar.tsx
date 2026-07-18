@@ -37,7 +37,7 @@ export function HomeMysteryJar({ className = "" }: { className?: string }) {
           transition={{ duration: 0.8, ease: EASE }}
         >
           <img
-            src="/mystery-jar-cutout.png?v=2"
+            src="/mystery-jar-cutout.webp"
             alt="A glowing apothecary jar of fairy lights and moss, a vintage pendant waiting inside, kraft tag marked ?"
             className="relative z-[1] w-full object-contain drop-shadow-[0_24px_48px_rgba(0,0,0,0.65)]"
             style={{ aspectRatio: "3 / 4" }}
@@ -131,7 +131,7 @@ export function HomeMysteryJarMedallion() {
       }}
     >
       <img
-        src="/mystery-jar-cutout.png?v=2"
+        src="/mystery-jar-cutout.webp"
         alt=""
         className="h-full w-full object-cover drop-shadow-[0_8px_16px_rgba(0,0,0,0.5)]"
         style={{ objectPosition: "50% 42%" }}

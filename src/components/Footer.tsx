@@ -54,7 +54,7 @@ export function Footer() {
 
       <div className="mx-auto max-w-3xl">
         <div className="flex flex-col items-center gap-6 text-center">
-          <img src="/logo.png?v=1" alt="Lychee Lore" className="h-20 w-20 rounded-full object-cover" />
+          <img src="/logo.webp" alt="Lychee Lore" className="h-20 w-20 rounded-full object-cover" />
           <div className="font-display text-4xl italic text-cream sm:text-5xl">{brand.name}</div>
           <p className="max-w-md font-hand text-xl leading-relaxed text-cream/75">{copy.footerLine}</p>
 

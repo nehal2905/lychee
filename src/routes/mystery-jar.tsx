@@ -280,7 +280,7 @@ function LivingJar() {
         />
 
         <img
-          src="/mystery-jar-cutout.png?v=2"
+          src="/mystery-jar-cutout.webp"
           alt="A glowing glass mystery jar of fairy lights and moss, kraft tag marked ?"
           className="relative z-[1] w-full object-contain drop-shadow-[0_24px_48px_rgba(0,0,0,0.65)]"
           style={{ aspectRatio: "3 / 4" }}
@@ -663,7 +663,7 @@ function PastJars() {
               >
                 <div className="relative aspect-[4/5] overflow-hidden bg-[#120C0F]">
                   <img
-                    src="/mystery-jar-cutout.png?v=2"
+                    src="/mystery-jar-cutout.webp"
                     alt=""
                     className="h-full w-full object-cover object-[50%_40%] opacity-90"
                     style={{ filter: active ? "brightness(0.95)" : "brightness(0.72)" }}

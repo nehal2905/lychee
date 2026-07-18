@@ -34,7 +34,7 @@ function renderVariant(v: Variant) {
       return (
         <div className="relative h-full w-full">
           <img
-            src="/logo.png?v=1"
+            src="/logo.webp"
             alt=""
             className="h-full w-full rounded-full object-cover"
           />

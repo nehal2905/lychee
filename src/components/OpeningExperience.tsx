@@ -45,9 +45,9 @@ export function OpeningExperience() {
           <div className="absolute inset-0 grid place-items-center">
             <div className="relative">
               <motion.img
-                src="/logo.png?v=1"
+                src="/logo.webp"
                 alt="Lychee Lore"
-                className="mx-auto h-44 w-44 rounded-full object-cover shadow-[0_0_60px_rgba(217,160,91,0.35)] sm:h-52 sm:w-52"
+                className="mx-auto h-44 w-44 rounded-full object-cover shadow-[0_0_28px_rgba(217,160,91,0.18)] sm:h-52 sm:w-52"
                 initial={{ opacity: 0, scale: 0.35 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}

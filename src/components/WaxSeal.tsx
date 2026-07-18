@@ -24,7 +24,7 @@ export function WaxSeal({
       aria-hidden={alt === "" ? true : undefined}
     >
       <img
-        src="/seal-ll.png?v=2"
+        src="/seal-ll.webp"
         alt={alt}
         width={size}
         height={size}

@@ -161,12 +161,18 @@ function Hero() {
         transition={{ duration: 2.4, ease: EASE }}
       >
         {artOk ? (
-          <img
-            src="/hero.png?v=4"
-            alt="A candlelit desk before an arched window at dusk, dark roses, vintage jewellery, a melting candle, and a jar of fairy lights"
-            className="h-full w-full object-cover object-[50%_35%] md:object-contain"
-            onError={() => setArtOk(false)}
-          />
+          <picture>
+            <source type="image/avif" srcSet="/hero-640.avif 640w, /hero-1024.avif 1024w" sizes="100vw" />
+            <source type="image/webp" srcSet="/hero-640.webp 640w, /hero-1024.webp 1024w" sizes="100vw" />
+            <img
+              src="/hero-1024.webp"
+              alt="A candlelit desk before an arched window at dusk, dark roses, vintage jewellery, a melting candle, and a jar of fairy lights"
+              className="h-full w-full object-cover object-[50%_35%] md:object-contain"
+              fetchPriority="high"
+              decoding="async"
+              onError={() => setArtOk(false)}
+            />
+          </picture>
         ) : (
           /* graceful stand-in until /hero.png is added to public/ */
           <div
@@ -189,7 +195,6 @@ function Hero() {
                 className="absolute right-[20%] top-[16%] h-12 w-12 rounded-full"
                 style={{
                   background: "radial-gradient(circle at 65% 40%, #F3E9D7 0%, #E8DCC5 40%, transparent 42%), radial-gradient(circle at 40% 50%, #5d4059 55%, transparent 56%)",
-                  boxShadow: "0 0 24px rgba(243,233,215,0.3)",
                 }}
               />
             </div>
@@ -212,40 +217,12 @@ function Hero() {
           </div>
         )}
 
-        {/* the moon in the painting keeps the first secret — an invisible touch,
-            with the faintest breath of light every few seconds to reward the curious */}
+        {/* the moon in the painting keeps the first secret — invisible touch target */}
         <button
           onClick={tapMoon}
           aria-label="The moon"
           className={`absolute z-20 h-28 w-28 -translate-y-1/2 rounded-full ${artOk ? "right-[30%] top-[38%]" : "right-[18%] top-[20%]"}`}
-        >
-          {!keys.moon && (
-            <>
-              {/* soft moonlight bloom — no blend mode so it shows on mobile too */}
-              <motion.span
-                aria-hidden
-                className="pointer-events-none absolute -inset-8 rounded-full"
-                style={{
-                  background:
-                    "radial-gradient(circle, rgba(243,233,215,0.34), rgba(212,166,90,0.14) 45%, transparent 72%)",
-                }}
-                animate={{ opacity: [0.4, 0.7, 0.45], scale: [1, 1.08, 1] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              />
-              {/* a faint ring circling the moon — a lunar halo */}
-              <motion.span
-                aria-hidden
-                className="pointer-events-none absolute -inset-2 rounded-full"
-                style={{
-                  border: "1.5px solid rgba(243,233,215,0.8)",
-                  boxShadow: "0 0 16px rgba(243,233,215,0.7), inset 0 0 10px rgba(243,233,215,0.3)",
-                }}
-                animate={{ opacity: [0.55, 0.9, 0.6], scale: [1, 1.05, 1] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              />
-            </>
-          )}
-        </button>
+        />
 
         {/* the candle breathes — a warm glow over the lower-left flame */}
         <motion.div
@@ -378,12 +355,12 @@ function ArchiveShelf() {
     to: string;
     liveJar?: boolean;
   }[] = [
-    { name: "Necklaces", sub: "Collected Across Europe", img: "/pendant.png", pos: "50% 42%", to: "#drop" },
-    { name: "Rings", sub: "One of Each, Never Two", img: "/ring.png", pos: "50% 45%", to: "#drop" },
-    { name: "Earrings", sub: "Pairs That Found Each Other", img: "/earring.png", pos: "50% 42%", to: "#drop" },
-    { name: "Bracelets", sub: "Clasped Through Centuries", img: "/locket.png", pos: "50% 46%", to: "#drop" },
-    { name: "Mystery Jars", sub: "The Piece Chooses You", img: "/mystery-jar-cutout.png?v=2", pos: "50% 42%", to: "/mystery-jar", liveJar: true },
-    { name: "One of One", sub: "Waiting to Be Inherited", img: "/hero.png?v=4", pos: "32% 86%", to: "#drop" },
+    { name: "Necklaces", sub: "Collected Across Europe", img: "/pendant.webp", pos: "50% 42%", to: "#drop" },
+    { name: "Rings", sub: "One of Each, Never Two", img: "/ring.webp", pos: "50% 45%", to: "#drop" },
+    { name: "Earrings", sub: "Pairs That Found Each Other", img: "/earring.webp", pos: "50% 42%", to: "#drop" },
+    { name: "Bracelets", sub: "Clasped Through Centuries", img: "/locket.webp", pos: "50% 46%", to: "#drop" },
+    { name: "Mystery Jars", sub: "The Piece Chooses You", img: "/mystery-jar-cutout.webp", pos: "50% 42%", to: "/mystery-jar", liveJar: true },
+    { name: "One of One", sub: "Waiting to Be Inherited", img: "/hero-640.webp", pos: "32% 86%", to: "#drop" },
   ];
   return (
     <section id="shelf" className="relative scroll-mt-16 overflow-hidden py-12">
@@ -391,9 +368,13 @@ function ArchiveShelf() {
           dark base, edges faded into the page so there is no hard break */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[#150E16]" />
-        <div
-          className="absolute inset-0 opacity-90"
-          style={{ backgroundImage: "url(/collections.png?v=1)", backgroundSize: "cover", backgroundPosition: "center" }}
+        <img
+          src="/collections.webp"
+          alt=""
+          aria-hidden
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover object-center opacity-90"
         />
         <div className="absolute inset-0 bg-[#150E16]/25" />
         <div
@@ -469,6 +450,7 @@ function ArchiveShelf() {
                     className="h-full w-full object-cover"
                     style={{ objectPosition: c.pos }}
                     loading="lazy"
+                    decoding="async"
                   />
                   <span className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_35%_30%,transparent_45%,rgba(10,5,10,0.55))]" />
                 </span>
