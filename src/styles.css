@@ -50,10 +50,12 @@
   --color-popover: var(--panel);
   --color-popover-foreground: var(--cream);
 
-  --font-display: "Bodoni Moda", "Playfair Display", serif;
-  --font-serif: "EB Garamond", "Lora", serif;
-  --font-mono: "Special Elite", ui-monospace, monospace;
-  --font-hand: "Pinyon Script", cursive;
+  --font-display: "Fraunces", "Playfair Display", serif;
+  --font-serif: "Lora", "EB Garamond", serif;
+  /* lore/label text was Special Elite (distressed typewriter) — now the readable
+     body serif so paragraph-length lore actually reads */
+  --font-mono: "Lora", ui-serif, serif;
+  --font-hand: "Dancing Script", cursive;
 
   --ease-velvet: cubic-bezier(0.22, 1, 0.36, 1);
 }
