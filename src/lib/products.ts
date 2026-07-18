@@ -18,7 +18,7 @@ export type Product = {
 
 export const products: Product[] = [
   { id: "moonlit-vow", name: "Moonlit Vow", price: 429, gemstone: "Moonstone", metal: "Sterling silver", era: "c. 1910", status: "available", lore: "Found in a Bombay estate sale, tucked inside a bundle of unopened letters. she wrote to a soldier who never came home.", hue: 260, stone: "#dfe7ef" },
-  { id: "crimson-oath", name: "Crimson Oath", price: 455, gemstone: "Ruby", metal: "18k yellow gold", era: "c. 1895", status: "available", lore: "Engraved 'always' on the inside of the band. we do not know whose promise it kept.", hue: 355, stone: "#8b1f2a" },
+  { id: "crimson-oath", name: "Crimson Oath", price: 455, gemstone: "Ruby", metal: "18k yellow gold", era: "c. 1895", status: "available", lore: "Engraved 'always' on the inside of the band. We do not know whose promise it kept. The jeweller who resized it refused to polish the word away.", hue: 355, stone: "#8b1f2a" },
   { id: "pearl-hush", name: "Pearl Hush", price: 415, gemstone: "Baroque pearl", metal: "Silver gilt", era: "c. 1920", status: "reserved", lore: "Worn to the ballet, three seasons in a row. the programme still smells faintly of jasmine.", hue: 40, stone: "#f5ecdc" },
   { id: "amethyst-elegy", name: "Amethyst Elegy", price: 445, gemstone: "Amethyst", metal: "Rose gold", era: "c. 1905", status: "available", lore: "Purchased on a wet afternoon in Paris, according to the receipt still folded inside the box.", hue: 290, stone: "#7a4b8a" },
   { id: "sapphire-lull", name: "Sapphire Lull", price: 449, gemstone: "Sapphire", metal: "Platinum", era: "c. 1930", status: "sold", soldIn: "sold in 4 minutes", lore: "She wore it every wednesday. no one ever asked why.", hue: 220, stone: "#2f4b7c" },

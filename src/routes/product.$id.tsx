@@ -98,9 +98,9 @@ function ProductPage() {
               ₹{product.price.toLocaleString("en-IN")}
             </p>
 
-            <div className="paper deckle fold-corner mt-10 rotate-imperfect-3 p-7">
-              <p className="font-type text-[10px] small-caps tracking-[0.3em] text-wood">Her Lore</p>
-              <blockquote className="dropcap mt-4 font-type text-[15px] leading-loose text-ink">"{product.lore}"</blockquote>
+            <div className="paper-crushed deckle fold-corner mt-10 rotate-imperfect-3 p-7">
+              <p className="relative z-[1] font-type text-[10px] small-caps tracking-[0.3em] text-wood/80">Her Lore</p>
+              <blockquote className="ink-hand relative z-[1] mt-4 text-[1.55rem] leading-[1.5]">{product.lore}</blockquote>
             </div>
 
             <p className="mt-8 font-hand text-lg text-cream/60">{copy.finalSale}</p>

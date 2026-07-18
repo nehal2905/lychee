@@ -21,7 +21,7 @@ export const loreEntries: LoreEntry[] = [
     id: "always",
     type: "letter",
     title: "Always",
-    text: "Engraved 'always' on the inside of the band. we do not know whose promise it kept. the jeweller who resized it refused to polish the word away.",
+    text: "Engraved 'always' on the inside of the band. We do not know whose promise it kept. The jeweller who resized it refused to polish the word away.",
     signoff: "from the keeper's notes",
   },
   {

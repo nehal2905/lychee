@@ -280,7 +280,7 @@ function LivingJar() {
         />
 
         <img
-          src="/mystery-jar-cutout.png?v=1"
+          src="/mystery-jar-cutout.png?v=2"
           alt="A glowing glass mystery jar of fairy lights and moss, kraft tag marked ?"
           className="relative z-[1] w-full object-contain drop-shadow-[0_24px_48px_rgba(0,0,0,0.65)]"
           style={{ aspectRatio: "3 / 4" }}
@@ -663,7 +663,7 @@ function PastJars() {
               >
                 <div className="relative aspect-[4/5] overflow-hidden bg-[#120C0F]">
                   <img
-                    src="/mystery-jar-cutout.png?v=1"
+                    src="/mystery-jar-cutout.png?v=2"
                     alt=""
                     className="h-full w-full object-cover object-[50%_40%] opacity-90"
                     style={{ filter: active ? "brightness(0.95)" : "brightness(0.72)" }}
@@ -686,10 +686,10 @@ function PastJars() {
 
                 <WaxSeal size={52} className="absolute -right-1 top-6 z-[4]" rotate={-12} />
 
-                <p className="mt-4 font-gothic text-[1.15rem] leading-relaxed text-ink/90">
-                  “{t.quote}”
+                <p className="ink-hand mt-4 text-[1.4rem] leading-[1.4]">
+                  {t.quote}
                 </p>
-                <p className="mt-2 font-type text-[9px] tracking-[0.2em] text-ink/50">{t.name}</p>
+                <p className="ink-hand mt-2 text-xl text-[#3a2a1c]">{t.name}</p>
 
                 <AnimatePresence>
                   {active && (

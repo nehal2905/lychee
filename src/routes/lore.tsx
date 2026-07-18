@@ -78,14 +78,14 @@ function LoreLibrary() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 12 }}
                 transition={{ duration: 0.9, delay: (i % 4) * 0.08, ease: EASE }}
-                className={`paper deckle fold-corner relative p-7 sm:p-9 ${tilts[i % tilts.length]} ${e.type === "poem" ? "text-center" : ""}`}
+                className={`paper-crushed deckle fold-corner relative p-7 sm:p-9 ${tilts[i % tilts.length]} ${e.type === "poem" ? "text-center" : ""}`}
               >
-                <p className="font-type text-[9px] small-caps tracking-[0.3em] text-wood/80">{typeLabel[e.type]}</p>
-                <h2 className="mt-3 font-display text-2xl italic text-ink">{e.title}</h2>
-                <p className={`mt-4 whitespace-pre-line font-type text-[14px] leading-loose text-ink ${e.type === "poem" ? "text-[15px]" : ""}`}>
+                <p className="relative z-[1] font-type text-[9px] small-caps tracking-[0.3em] text-wood/80">{typeLabel[e.type]}</p>
+                <h2 className="ink-hand relative z-[1] mt-3 text-[1.85rem] text-[#152032]">{e.title}</h2>
+                <p className={`ink-hand relative z-[1] mt-4 whitespace-pre-line text-[1.45rem] leading-[1.5] ${e.type === "poem" ? "text-[1.55rem]" : ""}`}>
                   {e.text}
                 </p>
-                {e.signoff && <p className="mt-5 font-hand text-xl text-wood">{e.signoff}</p>}
+                {e.signoff && <p className="ink-hand relative z-[1] mt-5 text-2xl text-[#3a2a1c]">{e.signoff}</p>}
                 {e.type === "letter" && (
                   <WaxSeal size={46} className="absolute -right-3 -top-3 z-[2]" rotate={-14} />
                 )}

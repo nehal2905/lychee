@@ -362,7 +362,7 @@ function ArchiveShelf() {
     { name: "Rings", sub: "One of Each, Never Two", img: "/ring.png", pos: "50% 45%", to: "#drop" },
     { name: "Earrings", sub: "Pairs That Found Each Other", img: "/earring.png", pos: "50% 42%", to: "#drop" },
     { name: "Bracelets", sub: "Clasped Through Centuries", img: "/locket.png", pos: "50% 46%", to: "#drop" },
-    { name: "Mystery Jars", sub: "The Piece Chooses You", img: "/mystery-jar-cutout.png?v=1", pos: "50% 42%", to: "/mystery-jar", liveJar: true },
+    { name: "Mystery Jars", sub: "The Piece Chooses You", img: "/mystery-jar-cutout.png?v=2", pos: "50% 42%", to: "/mystery-jar", liveJar: true },
     { name: "One of One", sub: "Waiting to Be Inherited", img: "/hero.png?v=4", pos: "32% 86%", to: "#drop" },
   ];
   return (
@@ -554,14 +554,16 @@ function LoreSection() {
             viewport={{ once: true }}
             transition={{ duration: 1.8, delay: 0.3, ease: EASE }}
           >
-            <div className="paper deckle fold-corner relative rotate-imperfect-2 p-8 pb-16 sm:p-12 sm:pb-20">
+            <div className="paper-crushed deckle fold-corner relative rotate-imperfect-2 p-8 pb-16 sm:p-12 sm:pb-20">
               {/* tape holding it down */}
               <div className="absolute -top-3 left-10 h-6 w-16 rotate-[-4deg] bg-parchment/60 shadow-sm" />
-              <p className="mb-4 font-type text-[10px] tracking-[0.3em] small-caps text-wood">A letter, folded twice</p>
-              <p className="dropcap font-type text-[15px] leading-loose text-ink sm:text-base">
+              <p className="mb-4 font-type text-[10px] tracking-[0.3em] small-caps text-wood/80">A letter, folded twice</p>
+              <p className="ink-hand relative z-[1] text-[1.55rem] leading-[1.55] sm:text-[1.75rem]">
                 {featured.lore}
               </p>
-              <p className="mt-8 font-hand text-2xl text-wood">found March, an estate sale, Bombay</p>
+              <p className="ink-hand relative z-[1] mt-8 text-2xl text-[#3a2a1c]">
+                from the keeper&apos;s notes
+              </p>
 
               {/* pressed dried flower */}
               <div className="absolute right-6 top-6 rotate-12 opacity-70">
@@ -897,11 +899,11 @@ function Letters() {
                 <path d="M14 6 v26 a4 4 0 0 1-8 0 V10 a2.5 2.5 0 0 1 5 0 v20" />
               </svg>
               <WaxSeal size={48} className="absolute -right-3 -top-3 z-[2]" rotate={i % 2 ? -12 : 8} />
-              <div className="relative z-[1] mb-3 text-sm tracking-[0.3em] text-[#8a6a2e]">★★★★★</div>
-              <p className="relative z-[1] font-gothic text-[1.2rem] leading-[1.7] text-ink sm:text-[1.35rem]">
-                "{l.text}"
+              <div className="relative z-[1] mb-3 text-sm tracking-[0.3em] text-[#6a4a28]">★★★★★</div>
+              <p className="ink-hand relative z-[1] text-[1.55rem] leading-[1.5] sm:text-[1.75rem]">
+                {l.text}
               </p>
-              <p className="relative z-[1] mt-5 font-hand text-xl text-wood">{l.by}</p>
+              <p className="ink-hand relative z-[1] mt-6 text-2xl text-[#3a2a1c]">{l.by}</p>
             </motion.div>
           ))}
         </div>

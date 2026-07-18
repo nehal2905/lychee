@@ -3,49 +3,46 @@ import { motion, useReducedMotion } from "motion/react";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-/** Homepage teaser — real jar artwork with a living glow overlay. */
+/** Homepage teaser — same free-floating jar treatment as the Mystery Jar page. */
 export function HomeMysteryJar({ className = "" }: { className?: string }) {
   const reduce = useReducedMotion();
 
   return (
     <Link
       to="/mystery-jar"
-      className={`group relative mx-auto flex w-full max-w-[280px] flex-col items-center ${className}`}
+      className={`group relative mx-auto flex w-full max-w-[300px] flex-col items-center ${className}`}
       aria-label="Enter the Mystery Jar"
     >
       <div className="relative w-full">
         {/* soft séance bloom behind the jar */}
         <motion.div
           aria-hidden
-          className="pointer-events-none absolute inset-x-[12%] bottom-[8%] top-[18%] rounded-[50%]"
+          className="pointer-events-none absolute inset-x-[10%] bottom-[6%] top-[18%] z-0 rounded-[50%]"
           animate={
             reduce
-              ? { opacity: 0.45 }
-              : { opacity: [0.35, 0.7, 0.42, 0.65, 0.4], scale: [1, 1.04, 0.98, 1.03, 1] }
+              ? { opacity: 0.4 }
+              : { opacity: [0.3, 0.5, 0.35], scale: [1, 1.03, 1] }
           }
-          transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
           style={{
             background:
-              "radial-gradient(ellipse 55% 50% at 50% 55%, rgba(212,166,90,0.4), rgba(184,148,90,0.08) 55%, transparent 72%)",
-            filter: "blur(6px)",
+              "radial-gradient(ellipse 55% 50% at 50% 55%, rgba(212,166,90,0.5), rgba(184,148,90,0.1) 55%, transparent 72%)",
+            filter: "blur(8px)",
           }}
         />
 
         <motion.div
-          className="relative overflow-hidden rounded-sm"
+          className="relative"
           whileHover={reduce ? undefined : { scale: 1.02 }}
           transition={{ duration: 0.8, ease: EASE }}
-          style={{
-            boxShadow:
-              "0 18px 48px rgba(0,0,0,0.55), 0 0 40px rgba(212,166,90,0.12)",
-          }}
         >
           <img
-            src="/mystery-jar-cutout.png?v=1"
+            src="/mystery-jar-cutout.png?v=2"
             alt="A glowing apothecary jar of fairy lights and moss, a vintage pendant waiting inside, kraft tag marked ?"
-            className="relative z-[1] w-full object-contain object-center"
+            className="relative z-[1] w-full object-contain drop-shadow-[0_24px_48px_rgba(0,0,0,0.65)]"
             style={{ aspectRatio: "3 / 4" }}
             loading="lazy"
+            draggable={false}
           />
 
           {/* candle-warm screen glow over the glass */}
@@ -54,34 +51,34 @@ export function HomeMysteryJar({ className = "" }: { className?: string }) {
             className="pointer-events-none absolute inset-0 z-[2]"
             style={{
               background:
-                "radial-gradient(ellipse 42% 48% at 50% 52%, rgba(212,166,90,0.28), transparent 68%)",
+                "radial-gradient(ellipse 38% 42% at 48% 52%, rgba(212,166,90,0.32), transparent 65%)",
               mixBlendMode: "screen",
             }}
-            animate={reduce ? { opacity: 0.5 } : { opacity: [0.35, 0.7, 0.45, 0.65, 0.4] }}
-            transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut" }}
+            animate={reduce ? { opacity: 0.3 } : { opacity: [0.2, 0.4, 0.25] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
           />
 
           {/* floating fairy-light motes over the jar body */}
           {!reduce &&
-            Array.from({ length: 7 }).map((_, i) => (
+            Array.from({ length: 10 }).map((_, i) => (
               <motion.span
                 key={i}
                 aria-hidden
                 className="pointer-events-none absolute z-[3] h-1 w-1 rounded-full bg-candle"
                 style={{
-                  left: `${36 + ((i * 9) % 28)}%`,
-                  top: `${38 + ((i * 11) % 32)}%`,
-                  boxShadow: "0 0 10px rgba(212,166,90,0.9)",
+                  left: `${32 + ((i * 37) % 36)}%`,
+                  top: `${36 + ((i * 29) % 38)}%`,
+                  boxShadow: "0 0 8px rgba(212,166,90,0.85)",
                 }}
                 animate={{
-                  opacity: [0.15, 0.95, 0.25, 0.8, 0.2],
-                  y: [0, -6 - (i % 3), 0],
-                  scale: [0.8, 1.25, 0.9],
+                  x: [0, i % 2 ? 2 : -2, 0],
+                  y: [0, -3, 0],
+                  opacity: [0.15, 0.5, 0.2],
                 }}
                 transition={{
-                  duration: 3.2 + (i % 4) * 0.55,
+                  duration: 5 + (i % 4),
                   repeat: Infinity,
-                  delay: i * 0.35,
+                  delay: i * 0.18,
                   ease: "easeInOut",
                 }}
               />
@@ -89,31 +86,21 @@ export function HomeMysteryJar({ className = "" }: { className?: string }) {
 
           {/* dust rising from the glow */}
           {!reduce &&
-            Array.from({ length: 4 }).map((_, i) => (
+            Array.from({ length: 8 }).map((_, i) => (
               <motion.span
-                key={`d-${i}`}
+                key={`dust-${i}`}
                 aria-hidden
-                className="pointer-events-none absolute z-[3] h-0.5 w-0.5 rounded-full bg-cream/50"
-                style={{ left: `${30 + i * 12}%`, bottom: "28%" }}
-                animate={{ y: [0, -40 - i * 8], opacity: [0, 0.55, 0] }}
+                className="pointer-events-none absolute z-[3] h-0.5 w-0.5 rounded-full bg-cream/40"
+                style={{ left: `${12 + ((i * 47) % 76)}%`, top: `${22 + ((i * 33) % 60)}%` }}
+                animate={{ y: [0, -20, 0], opacity: [0, 0.55, 0] }}
                 transition={{
-                  duration: 5.5 + i,
+                  duration: 7 + (i % 3) * 2,
                   repeat: Infinity,
-                  delay: i * 1.1,
-                  ease: "easeOut",
+                  delay: i * 0.7,
+                  ease: "easeInOut",
                 }}
               />
             ))}
-
-          {/* vignette so the artwork settles into the page */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 z-[4]"
-            style={{
-              background:
-                "radial-gradient(ellipse at 50% 45%, transparent 48%, rgba(10,5,8,0.55) 100%)",
-            }}
-          />
         </motion.div>
       </div>
 
@@ -144,9 +131,9 @@ export function HomeMysteryJarMedallion() {
       }}
     >
       <img
-        src="/mystery-jar-cutout.png?v=1"
+        src="/mystery-jar-cutout.png?v=2"
         alt=""
-        className="h-full w-full object-cover"
+        className="h-full w-full object-cover drop-shadow-[0_8px_16px_rgba(0,0,0,0.5)]"
         style={{ objectPosition: "50% 42%" }}
         loading="lazy"
       />
@@ -176,7 +163,6 @@ export function HomeMysteryJarMedallion() {
             transition={{ duration: 2.2 + i * 0.4, repeat: Infinity, delay: i * 0.4 }}
           />
         ))}
-      <span className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_35%_30%,transparent_45%,rgba(10,5,10,0.55))]" />
     </span>
   );
 }
