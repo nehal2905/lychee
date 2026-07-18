@@ -220,9 +220,16 @@ function Hero() {
           className={`absolute z-20 h-28 w-28 -translate-y-1/2 rounded-full ${artOk ? "right-[30%] top-[38%]" : "right-[18%] top-[20%]"}`}
         >
           {!keys.moon && (
-            <span
-              className="absolute inset-0 rounded-full animate-glowpulse"
-              style={{ background: "radial-gradient(circle, rgba(243,233,215,0.07), transparent 60%)", animationDuration: "12s" }}
+            <motion.span
+              aria-hidden
+              className="pointer-events-none absolute -inset-5 rounded-full"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(243,233,215,0.22), rgba(212,166,90,0.10) 45%, transparent 70%)",
+                mixBlendMode: "screen",
+              }}
+              animate={{ opacity: [0.35, 0.75, 0.4], scale: [1, 1.08, 1] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             />
           )}
         </button>
