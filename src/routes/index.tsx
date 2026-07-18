@@ -222,14 +222,14 @@ function Hero() {
           {!keys.moon && (
             <motion.span
               aria-hidden
-              className="pointer-events-none absolute -inset-5 rounded-full"
+              className="pointer-events-none absolute -inset-7 rounded-full"
               style={{
                 background:
-                  "radial-gradient(circle, rgba(243,233,215,0.22), rgba(212,166,90,0.10) 45%, transparent 70%)",
+                  "radial-gradient(circle, rgba(243,233,215,0.40), rgba(212,166,90,0.18) 45%, transparent 72%)",
                 mixBlendMode: "screen",
               }}
-              animate={{ opacity: [0.35, 0.75, 0.4], scale: [1, 1.08, 1] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              animate={{ opacity: [0.55, 1, 0.6], scale: [1, 1.1, 1] }}
+              transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
             />
           )}
         </button>
