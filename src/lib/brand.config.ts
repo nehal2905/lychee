@@ -58,3 +58,47 @@ export const palette = {
 // commerce numbers (placeholders)
 export const shippingFee = 80; // ₹, shown as a line in cart & checkout
 export const mysteryJarPrice = 999; // ₹, the one piece priced above the drop range
+
+// The Mystery Jar — blind-buy ritual copy & charm (page-only constants)
+export const mysteryJar = {
+  entryLine: "Every jar holds a story. You just have to open it.",
+  subLine: "You don't choose the piece. The piece chooses you.",
+  closeLine: "Some treasures cannot be searched for. They can only arrive.",
+  prepNote: "Your jar is prepared within 3 days of the current drop.",
+  priceLine: "one jar · one story · one you",
+  promiseStrip: "Blind Buy · One of a Kind · Yours Forever",
+  /** bonus secret — tap the jar 7 times; nothing unlocks */
+  tagEaster: "patience, love.",
+  whispers: [
+    "…she waited a long time for you…",
+    "…found in an attic in 1967…",
+    "…the moon has seen this one before…",
+    "…someone loved this once. someone will again…",
+  ],
+  styles: ["Rings", "Earrings", "Lockets", "Surprise me"] as const,
+  ringSizes: ["4", "5", "6", "7", "8", "9", "10"],
+  promises: [
+    {
+      title: "One piece, chosen for you",
+      body: "A curated one-of-a-kind vintage treasure, matched to the little you tell us.",
+      icon: "chosen" as const,
+    },
+    {
+      title: "Its lore, sealed inside",
+      body: "Every jar ships with the piece's handwritten story, wax-sealed.",
+      icon: "sealed" as const,
+    },
+    {
+      title: "Never repeated",
+      body: "No two jars are ever the same. What arrives is yours alone.",
+      icon: "unique" as const,
+    },
+  ],
+  testimonials: [
+    { quote: "I cried a little. It was exactly me.", name: "Anya" },
+    { quote: "Opened it by candlelight. Perfect.", name: "Meera" },
+    { quote: "I would never have picked it — and that is why it fits.", name: "Sara" },
+    { quote: "The note inside made me write back to myself.", name: "Priya" },
+    { quote: "A stranger's heirloom. Now mine.", name: "Leila" },
+  ],
+};

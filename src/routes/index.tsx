@@ -8,6 +8,7 @@ import { Countdown } from "@/components/Countdown";
 import { brand, copy } from "@/lib/brand.config";
 import { useStore } from "@/lib/store";
 import { EasterEggModal } from "@/components/EasterEggs";
+import { HomeMysteryJar, HomeMysteryJarMedallion } from "@/components/HomeMysteryJar";
 
 export const Route = createFileRoute("/")({ component: Home });
 
@@ -350,12 +351,19 @@ function Hero() {
    then six catalog cards on a swipeable shelf — each with a jewellery
    vignette in a gold medallion, floating gently like it's underwater. */
 function ArchiveShelf() {
-  const cats = [
+  const cats: {
+    name: string;
+    sub: string;
+    img: string;
+    pos: string;
+    to: string;
+    liveJar?: boolean;
+  }[] = [
     { name: "Necklaces", sub: "Collected Across Europe", img: "/pendant.png", pos: "50% 42%", to: "#drop" },
     { name: "Rings", sub: "One of Each, Never Two", img: "/ring.png", pos: "50% 45%", to: "#drop" },
     { name: "Earrings", sub: "Pairs That Found Each Other", img: "/earring.png", pos: "50% 42%", to: "#drop" },
     { name: "Bracelets", sub: "Clasped Through Centuries", img: "/locket.png", pos: "50% 46%", to: "#drop" },
-    { name: "Mystery Jars", sub: "The Piece Chooses You", img: "/hero.png?v=4", pos: "76% 82%", to: "/mystery-jar" },
+    { name: "Mystery Jars", sub: "The Piece Chooses You", img: "/mystery-jar-cutout.png?v=1", pos: "50% 42%", to: "/mystery-jar", liveJar: true },
     { name: "One of One", sub: "Waiting to Be Inherited", img: "/hero.png?v=4", pos: "32% 86%", to: "#drop" },
   ];
   return (
@@ -425,23 +433,27 @@ function ArchiveShelf() {
               <span className="absolute bottom-2.5 left-2.5 h-3 w-3 border-b border-l border-gold/50" />
               <span className="absolute bottom-2.5 right-2.5 h-3 w-3 border-b border-r border-gold/50" />
 
-              {/* jewellery vignette in a gold medallion */}
-              <span
-                className="relative mx-auto block h-24 w-24 overflow-hidden rounded-full"
-                style={{
-                  border: "1px solid rgba(184,148,90,0.55)",
-                  boxShadow: "0 0 22px rgba(0,0,0,0.55), inset 0 0 16px rgba(0,0,0,0.5)",
-                }}
-              >
-                <img
-                  src={c.img}
-                  alt=""
-                  className="h-full w-full object-cover"
-                  style={{ objectPosition: c.pos }}
-                  loading="lazy"
-                />
-                <span className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_35%_30%,transparent_45%,rgba(10,5,10,0.55))]" />
-              </span>
+              {/* jewellery vignette in a gold medallion — live jar for Mystery Jars */}
+              {c.liveJar ? (
+                <HomeMysteryJarMedallion />
+              ) : (
+                <span
+                  className="relative mx-auto block h-24 w-24 overflow-hidden rounded-full"
+                  style={{
+                    border: "1px solid rgba(184,148,90,0.55)",
+                    boxShadow: "0 0 22px rgba(0,0,0,0.55), inset 0 0 16px rgba(0,0,0,0.5)",
+                  }}
+                >
+                  <img
+                    src={c.img}
+                    alt=""
+                    className="h-full w-full object-cover"
+                    style={{ objectPosition: c.pos }}
+                    loading="lazy"
+                  />
+                  <span className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_35%_30%,transparent_45%,rgba(10,5,10,0.55))]" />
+                </span>
+              )}
 
               <h3 className="mt-4 font-display text-2xl italic text-cream">{c.name}</h3>
               <span className="hairline mx-auto mt-2.5 block w-10 opacity-60" />
@@ -1039,27 +1051,9 @@ function AboutStrip() {
           @lychee._.lore
         </p>
 
-        {/* mystery jar — a glow in the dark, not a banner */}
-        <div className="mt-20 text-center">
-          <Link to="/mystery-jar" className="group inline-flex flex-col items-center gap-2">
-            <span className="flex flex-col items-center">
-              {/* cork lid */}
-              <div className="h-2.5 w-6 rounded-t-sm bg-wood/80 transition-transform duration-500 group-hover:-translate-y-1" />
-              {/* neck */}
-              <div className="h-1.5 w-7 bg-panel/40 border-x border-gold/40 backdrop-blur" />
-              {/* body */}
-              <span className="relative block h-16 w-14 rounded-b-3xl rounded-t-xl border border-gold/40 bg-panel/40 shadow-[inset_0_0_15px_rgba(255,255,255,0.05)] transition-shadow duration-500 group-hover:shadow-[inset_0_0_20px_rgba(212,166,90,0.2)]">
-                {[...Array(4)].map((_, i) => (
-                  <span
-                    key={i}
-                    className="absolute h-1 w-1 rounded-full bg-candle animate-twinkle"
-                    style={{ left: `${22 + ((i * 19) % 55)}%`, top: `${22 + ((i * 23) % 55)}%`, animationDelay: `${i * 0.5}s` }}
-                  />
-                ))}
-              </span>
-            </span>
-            <span className="link-quiet mt-2 text-lg text-candle">Enter the Mystery Jar</span>
-          </Link>
+        {/* mystery jar — living artwork, not a CSS doodle */}
+        <div className="mt-20 px-2">
+          <HomeMysteryJar />
         </div>
       </div>
     </section>
