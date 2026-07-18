@@ -56,6 +56,8 @@
      body serif so paragraph-length lore actually reads */
   --font-mono: "Lora", ui-serif, serif;
   --font-hand: "Dancing Script", cursive;
+  /* Victorian editorial serif for review letters — ornate, still readable */
+  --font-gothic: "Cormorant Garamond", "EB Garamond", "Times New Roman", serif;
 
   --ease-velvet: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -197,6 +199,12 @@
 @utility font-serif-body { font-family: var(--font-serif); }
 @utility font-type { font-family: var(--font-mono); }
 @utility font-hand { font-family: var(--font-hand); }
+@utility font-gothic {
+  font-family: var(--font-gothic);
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: 0.01em;
+}
 
 @utility text-shadow-warm {
   text-shadow: 0 1px 0 rgba(0,0,0,0.4), 0 0 34px color-mix(in oklab, var(--candle) 28%, transparent);
@@ -257,6 +265,26 @@
   color: var(--ink);
   box-shadow:
     inset 0 0 40px rgba(92,64,51,0.25),
+    0 14px 40px rgba(0,0,0,0.55);
+}
+
+/* aged crushed letter stock — for review cards */
+@utility paper-crushed {
+  position: relative;
+  color: var(--ink);
+  background-color: #e8d4a8;
+  background-image:
+    /* soft age stains */
+    radial-gradient(ellipse at 18% 12%, rgba(92,64,51,0.12), transparent 55%),
+    radial-gradient(ellipse at 82% 88%, rgba(74,40,30,0.16), transparent 50%),
+    radial-gradient(ellipse at 70% 30%, rgba(139,105,20,0.08), transparent 40%),
+    /* crushed crease grain (warm parchment tone) */
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='420'><filter id='c'><feTurbulence type='fractalNoise' baseFrequency='0.028' numOctaves='5' seed='11' stitchTiles='stitch'/><feDiffuseLighting lighting-color='%23f3e9d7' surfaceScale='2.8' diffuseConstant='1.05'><feDistantLight azimuth='40' elevation='52'/></feDiffuseLighting><feColorMatrix values='0 0 0 0 0.72  0 0 0 0 0.58  0 0 0 0 0.38  0.22 0 0 0 0'/></filter><rect width='100%' height='100%' filter='url(%23c)'/></svg>"),
+    linear-gradient(168deg, #f3e6c8 0%, #e6d0a8 55%, #d8bd8f 100%);
+  background-size: auto, auto, auto, 280px 280px, auto;
+  box-shadow:
+    inset 0 0 50px rgba(92,64,51,0.28),
+    inset 0 1px 0 rgba(255,248,230,0.35),
     0 14px 40px rgba(0,0,0,0.55);
 }
 
@@ -526,33 +554,6 @@
     transparent);
   background-size: 200% 100%;
   animation: shimmer-x 3s linear infinite;
-}
-
-/* top nav wordmark — candlelit gold that catches the eye */
-@utility brand-mark-text {
-  background-image: linear-gradient(
-    105deg,
-    #E8DCC5 0%,
-    #D4A65A 28%,
-    #F3E9D7 48%,
-    #B8945A 68%,
-    #E8DCC5 100%
-  );
-  background-size: 220% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  filter: drop-shadow(0 0 10px rgba(212, 166, 90, 0.35));
-  animation: brand-shimmer 7s ease-in-out infinite;
-  transition: filter 0.7s var(--ease-velvet);
-}
-.brand-mark:hover .brand-mark-text {
-  filter: drop-shadow(0 0 16px rgba(212, 166, 90, 0.55));
-  animation-duration: 3.5s;
-}
-@keyframes brand-shimmer {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
 }
 
 @keyframes bloom {

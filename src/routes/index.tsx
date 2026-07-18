@@ -526,8 +526,7 @@ function LoreSection() {
           transition={{ duration: 1.6, ease: EASE }}
           className="mb-20"
         >
-          <p className="overline-label">Every Piece Has Its Lore</p>
-          <h2 className="display-xl mt-6 max-w-2xl text-5xl sm:text-7xl">The Ones That Speak.</h2>
+          <h2 className="display-xl max-w-2xl text-5xl sm:text-7xl">The Ones That Speak.</h2>
         </motion.div>
 
         <div className="relative grid items-center gap-6 md:grid-cols-12">
@@ -651,8 +650,7 @@ function SoldArchive() {
           transition={{ duration: 1.6, ease: EASE }}
           className="mb-20"
         >
-          <p className="overline-label">The Ones That Got Away</p>
-          <h2 className="display-xl mt-6 max-w-3xl text-5xl sm:text-7xl">
+          <h2 className="display-xl max-w-3xl text-5xl sm:text-7xl">
             Every piece finds its person.
           </h2>
         </motion.div>
@@ -880,8 +878,7 @@ function Letters() {
           transition={{ duration: 1.6, ease: EASE }}
           className="mb-16"
         >
-          <p className="overline-label">Letters</p>
-          <h2 className="display-xl mt-6 text-5xl sm:text-7xl">From the Desk Drawer.</h2>
+          <h2 className="display-xl text-5xl sm:text-7xl">From the Desk Drawer.</h2>
         </motion.div>
 
         {/* letters left lying on a desk, overlapping */}
@@ -893,16 +890,18 @@ function Letters() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1.6, delay: i * 0.25, ease: EASE }}
-              className={`paper deckle relative p-7 sm:p-8 ${scatter[i]} ${i === 1 ? "shadow-2xl" : ""}`}
+              className={`paper-crushed deckle relative p-7 sm:p-8 ${scatter[i]} ${i === 1 ? "shadow-2xl" : ""}`}
             >
               {/* paper clip */}
-              <svg viewBox="0 0 20 44" className="absolute -top-3 left-6 h-10 w-5 text-haze/70" fill="none" stroke="currentColor" strokeWidth="1.6">
+              <svg viewBox="0 0 20 44" className="absolute -top-3 left-6 z-[1] h-10 w-5 text-haze/70" fill="none" stroke="currentColor" strokeWidth="1.6">
                 <path d="M14 6 v26 a4 4 0 0 1-8 0 V10 a2.5 2.5 0 0 1 5 0 v20" />
               </svg>
               <WaxSeal size={48} className="absolute -right-3 -top-3 z-[2]" rotate={i % 2 ? -12 : 8} />
-              <div className="mb-3 text-sm tracking-[0.3em] text-[#8a6a2e]">★★★★★</div>
-              <p className="font-type text-[14px] leading-relaxed text-ink">"{l.text}"</p>
-              <p className="mt-5 font-hand text-xl text-wood">{l.by}</p>
+              <div className="relative z-[1] mb-3 text-sm tracking-[0.3em] text-[#8a6a2e]">★★★★★</div>
+              <p className="relative z-[1] font-gothic text-[1.2rem] leading-[1.7] text-ink sm:text-[1.35rem]">
+                "{l.text}"
+              </p>
+              <p className="relative z-[1] mt-5 font-hand text-xl text-wood">{l.by}</p>
             </motion.div>
           ))}
         </div>
@@ -930,8 +929,7 @@ function WhatsAppOptIn() {
           <span className="absolute bottom-3 left-3 h-3 w-3 border-b border-l border-gold/60" />
           <span className="absolute bottom-3 right-3 h-3 w-3 border-b border-r border-gold/60" />
 
-          <p className="overline-label">An Invitation</p>
-          <h2 className="mt-5 font-display text-3xl italic text-cream sm:text-4xl">
+          <h2 className="font-display text-3xl italic text-cream sm:text-4xl">
             Be the First to Know 🤍
           </h2>
           <p className="mt-4 font-hand text-xl text-cream/70">
@@ -978,8 +976,7 @@ function AboutStrip() {
           viewport={{ once: true }}
           transition={{ duration: 2.2, ease: EASE }}
         >
-          <p className="overline-label">The Lore of Lychee</p>
-          <p className="mt-10 font-display text-3xl italic leading-snug text-cream sm:text-5xl">
+          <p className="font-display text-3xl italic leading-snug text-cream sm:text-5xl">
             We look for the pieces that carry a life inside them.
             <span className="text-haze"> What we can't tell you, they will quietly, over years.</span>
           </p>

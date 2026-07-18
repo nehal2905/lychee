@@ -686,7 +686,7 @@ function PastJars() {
 
                 <WaxSeal size={52} className="absolute -right-1 top-6 z-[4]" rotate={-12} />
 
-                <p className="mt-4 font-hand text-[15px] leading-snug text-ink/90">
+                <p className="mt-4 font-gothic text-[1.15rem] leading-relaxed text-ink/90">
                   “{t.quote}”
                 </p>
                 <p className="mt-2 font-type text-[9px] tracking-[0.2em] text-ink/50">{t.name}</p>

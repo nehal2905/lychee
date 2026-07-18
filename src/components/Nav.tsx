@@ -37,15 +37,16 @@ export function Nav() {
           boxShadow: "0 10px 28px rgba(0,0,0,0.55), 0 1px 0 rgba(232,220,197,0.1)",
         }}
       >
-        <div className="mx-auto relative flex max-w-7xl items-center justify-between px-5 py-3.5 sm:px-8 sm:py-4">
+        {/* h-14 matches the bottom menu bar thickness */}
+        <div className="mx-auto relative flex h-14 max-w-7xl items-center justify-between px-5 sm:px-8">
           <div className="flex items-center gap-3">
             {onSubpage && (
               <button
                 aria-label="Go back"
                 onClick={goBack}
-                className="-ml-1 p-2 text-gold transition-colors duration-500 hover:text-candle"
+                className="-ml-1 p-1.5 text-gold transition-colors duration-500 hover:text-candle"
               >
-                <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.85" strokeLinecap="round">
+                <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.85" strokeLinecap="round">
                   <path d="M14.5 5.5 L8 12 l6.5 6.5" />
                 </svg>
               </button>
@@ -65,37 +66,17 @@ export function Nav() {
 
           <Link
             to="/"
-            className={`brand-mark group absolute left-1/2 flex -translate-x-1/2 items-center gap-2.5 text-center leading-none ${
-              onHome ? "opacity-100" : "opacity-90"
-            }`}
+            className="absolute left-1/2 flex -translate-x-1/2 items-center gap-2 text-center leading-none"
             aria-label={brand.name}
             aria-current={onHome ? "page" : undefined}
           >
-            <span className="relative">
-              <img
-                src="/logo.png?v=1"
-                alt=""
-                className={`h-7 w-7 rounded-full object-cover transition duration-700 sm:h-9 sm:w-9 ${
-                  onHome
-                    ? "shadow-[0_0_16px_rgba(212,166,90,0.45)]"
-                    : "shadow-[0_0_10px_rgba(212,166,90,0.22)] group-hover:shadow-[0_0_18px_rgba(212,166,90,0.4)]"
-                }`}
-              />
-              {onHome && (
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute inset-0 rounded-full animate-glowpulse"
-                  style={{ boxShadow: "0 0 14px rgba(212,166,90,0.45)" }}
-                />
-              )}
-            </span>
-            <span className="flex flex-col items-start">
-              <span className="brand-mark-text font-display text-[1.35rem] italic tracking-[-0.02em] text-transparent sm:text-[1.65rem]">
-                {brand.name}
-              </span>
-              <span className="mt-0.5 hidden font-type text-[8px] tracking-[0.38em] text-gold/55 small-caps sm:block">
-                Collect Beautiful Moments
-              </span>
+            <img
+              src="/logo.png?v=1"
+              alt=""
+              className="h-6 w-6 rounded-full object-cover"
+            />
+            <span className="font-display text-[1.25rem] italic tracking-[-0.02em] text-cream transition-colors duration-500 hover:text-parchment sm:text-[1.4rem]">
+              {brand.name}
             </span>
           </Link>
 

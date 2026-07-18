@@ -102,7 +102,8 @@ export function BottomNav() {
         paddingBottom: "env(safe-area-inset-bottom)",
       }}
     >
-      <div className="mx-auto flex max-w-md items-stretch">
+      {/* h-14 matches the top nav bar thickness */}
+      <div className="mx-auto flex h-14 max-w-md items-stretch">
         <NavItem to="/" active={homeActive} label="Home" onNavigate={goHome}>
           <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round">
             <path d="M5 20 V11 a7 7 0 0 1 14 0 v9" />
@@ -127,7 +128,7 @@ export function BottomNav() {
 
         <button
           onClick={() => setCartOpen(true)}
-          className={`relative flex flex-1 flex-col items-center gap-1 py-2.5 transition-colors duration-500 ${
+          className={`relative flex h-full flex-1 flex-col items-center justify-center gap-0.5 transition-colors duration-500 ${
             bagActive ? "text-candle" : "text-gold/85"
           }`}
           style={
@@ -192,7 +193,7 @@ function NavItem({
       to={to}
       hash={hash}
       onClick={onNavigate}
-      className={`relative flex flex-1 flex-col items-center gap-1 py-2.5 transition-colors duration-500 ${
+      className={`relative flex h-full flex-1 flex-col items-center justify-center gap-0.5 transition-colors duration-500 ${
         active ? "text-candle" : "text-gold/85 hover:text-candle"
       }`}
       style={

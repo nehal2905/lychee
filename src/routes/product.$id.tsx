@@ -133,7 +133,7 @@ function ProductPage() {
       {/* sticky bottom bar on mobile — sits above the bottom navigation */}
       {!sold && (
         <div
-          className="fixed inset-x-0 bottom-[62px] z-30 bg-panel/95 p-4 backdrop-blur md:bottom-0"
+          className="fixed inset-x-0 bottom-[58px] z-30 bg-panel/95 p-4 backdrop-blur md:bottom-0"
           style={{ borderTop: "1px solid rgba(184,148,90,0.35)" }}
         >
           <div className="mx-auto flex max-w-md items-center gap-4">

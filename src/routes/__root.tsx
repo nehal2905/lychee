@@ -90,7 +90,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Lora:ital,wght@0,400..600;1,400..500&family=Dancing+Script:wght@500..700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Lora:ital,wght@0,400..600;1,400..500&family=Dancing+Script:wght@500..700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&display=swap",
       },
     ],
   }),
@@ -135,7 +135,8 @@ function RootComponent() {
         <OpeningExperience />
         <Nav />
         {/* bottom padding on mobile so the fixed bottom nav never covers content */}
-        <div className="pb-[62px] md:pb-0">
+        {/* 56px bar + 2px border — matches top/bottom nav h-14 */}
+        <div className="pb-[58px] md:pb-0">
           {/* a soft page-turn between routes — opacity only: a transform here
               would break position:fixed for bars and overlays inside pages */}
           <motion.main
