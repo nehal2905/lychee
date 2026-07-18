@@ -221,26 +221,26 @@ function Hero() {
         >
           {!keys.moon && (
             <>
-              {/* soft moonlight bloom — no blend mode so it shows on mobile too */}
+              {/* soft moonlight bloom — tucked close around the moon */}
               <motion.span
                 aria-hidden
-                className="pointer-events-none absolute -inset-8 rounded-full"
+                className="pointer-events-none absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full"
                 style={{
                   background:
-                    "radial-gradient(circle, rgba(243,233,215,0.34), rgba(212,166,90,0.14) 45%, transparent 72%)",
+                    "radial-gradient(circle, rgba(243,233,215,0.28), rgba(212,166,90,0.10) 45%, transparent 70%)",
                 }}
-                animate={{ opacity: [0.4, 0.7, 0.45], scale: [1, 1.08, 1] }}
+                animate={{ opacity: [0.3, 0.55, 0.35], scale: [1, 1.06, 1] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
               />
-              {/* a faint ring circling the moon — a lunar halo */}
+              {/* a faint ring exactly around the moon — a subtle lunar halo */}
               <motion.span
                 aria-hidden
-                className="pointer-events-none absolute -inset-2 rounded-full"
+                className="pointer-events-none absolute left-1/2 top-1/2 h-14 w-14 -translate-x-1/2 -translate-y-1/2 rounded-full"
                 style={{
-                  border: "1.5px solid rgba(243,233,215,0.8)",
-                  boxShadow: "0 0 16px rgba(243,233,215,0.7), inset 0 0 10px rgba(243,233,215,0.3)",
+                  border: "1px solid rgba(243,233,215,0.5)",
+                  boxShadow: "0 0 8px rgba(243,233,215,0.4)",
                 }}
-                animate={{ opacity: [0.55, 0.9, 0.6], scale: [1, 1.05, 1] }}
+                animate={{ opacity: [0.35, 0.6, 0.4], scale: [1, 1.04, 1] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
               />
             </>
