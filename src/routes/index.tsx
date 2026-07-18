@@ -221,29 +221,26 @@ function Hero() {
         >
           {!keys.moon && (
             <>
-              {/* soft moonlight bloom */}
+              {/* soft moonlight bloom — no blend mode so it shows on mobile too */}
               <motion.span
                 aria-hidden
-                className="pointer-events-none absolute -inset-10 rounded-full"
+                className="pointer-events-none absolute -inset-8 rounded-full"
                 style={{
                   background:
-                    "radial-gradient(circle, rgba(243,233,215,0.70), rgba(212,166,90,0.30) 42%, transparent 74%)",
-                  mixBlendMode: "screen",
+                    "radial-gradient(circle, rgba(243,233,215,0.34), rgba(212,166,90,0.14) 45%, transparent 72%)",
                 }}
-                animate={{ opacity: [0.7, 1, 0.75], scale: [1, 1.12, 1] }}
+                animate={{ opacity: [0.4, 0.7, 0.45], scale: [1, 1.08, 1] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
               />
-              {/* a luminous ring circling the moon — a lunar halo */}
+              {/* a faint ring circling the moon — a lunar halo */}
               <motion.span
                 aria-hidden
                 className="pointer-events-none absolute -inset-2 rounded-full"
                 style={{
-                  border: "1.5px solid rgba(243,233,215,0.75)",
-                  boxShadow:
-                    "0 0 16px rgba(243,233,215,0.6), inset 0 0 14px rgba(243,233,215,0.35)",
-                  mixBlendMode: "screen",
+                  border: "1.5px solid rgba(243,233,215,0.8)",
+                  boxShadow: "0 0 16px rgba(243,233,215,0.7), inset 0 0 10px rgba(243,233,215,0.3)",
                 }}
-                animate={{ opacity: [0.55, 0.95, 0.6], scale: [1, 1.05, 1] }}
+                animate={{ opacity: [0.55, 0.9, 0.6], scale: [1, 1.05, 1] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
               />
             </>

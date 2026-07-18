@@ -1,6 +1,6 @@
 import { Link, useNavigate, useRouter, useRouterState } from "@tanstack/react-router";
 import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { brand } from "@/lib/brand.config";
 import { useStore } from "@/lib/store";
 import { KeysProgress } from "./EasterEggs";
@@ -11,6 +11,7 @@ export function Nav() {
   const router = useRouter();
   const navigate = useNavigate();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const reduce = useReducedMotion();
   const onSubpage = pathname !== "/";
   const onWishlist = pathname.startsWith("/wishlist");
   const onHome = pathname === "/";
@@ -70,14 +71,50 @@ export function Nav() {
             aria-label={brand.name}
             aria-current={onHome ? "page" : undefined}
           >
-            <img
+            <motion.img
               src="/logo.png?v=1"
               alt=""
               className="h-6 w-6 rounded-full object-cover"
+              animate={
+                reduce
+                  ? undefined
+                  : {
+                      filter: [
+                        "drop-shadow(0 0 5px rgba(232,184,113,0.55)) brightness(1.08)",
+                        "drop-shadow(0 0 14px rgba(243,220,170,1)) brightness(1.22)",
+                        "drop-shadow(0 0 5px rgba(232,184,113,0.55)) brightness(1.08)",
+                      ],
+                      scale: [1, 1.06, 1],
+                    }
+              }
+              transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut" }}
             />
-            <span className="font-display text-[1.25rem] italic tracking-[-0.02em] text-cream transition-colors duration-500 hover:text-parchment sm:text-[1.4rem]">
-              {brand.name}
-            </span>
+            {reduce ? (
+              <span
+                className="font-display text-[1.25rem] italic tracking-[-0.02em] text-parchment sm:text-[1.4rem]"
+                style={{ textShadow: "0 0 8px rgba(243,233,215,0.4)" }}
+              >
+                {brand.name}
+              </span>
+            ) : (
+              <motion.span
+                className="font-display text-[1.25rem] italic tracking-[-0.02em] sm:text-[1.4rem]"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(100deg, #F3E9D7 0%, #F3E9D7 38%, #FFFBF0 50%, #F3E9D7 62%, #F3E9D7 100%)",
+                  backgroundSize: "220% 100%",
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  color: "transparent",
+                  filter: "drop-shadow(0 0 6px rgba(243,233,215,0.4))",
+                }}
+                animate={{ backgroundPositionX: ["160%", "-60%"] }}
+                transition={{ duration: 3.2, repeat: Infinity, repeatDelay: 2.4, ease: "easeInOut" }}
+              >
+                {brand.name}
+              </motion.span>
+            )}
           </Link>
 
           <div className="flex items-center gap-4">
