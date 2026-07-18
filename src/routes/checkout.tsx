@@ -6,7 +6,7 @@ import { getProduct } from "@/lib/products";
 import { copy, shippingFee } from "@/lib/brand.config";
 import { processPaymentPlaceholder } from "@/lib/payments";
 import { Loader } from "@/components/Loader";
-
+import { WaxSeal } from "@/components/WaxSeal";
 export const Route = createFileRoute("/checkout")({ component: Checkout });
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -38,7 +38,7 @@ function Checkout() {
           transition={{ duration: 1.4, ease: EASE }}
           className="paper deckle fold-corner max-w-md rotate-imperfect-1 p-10 pb-14 text-center sm:p-12"
         >
-          <div className="wax-seal mx-auto mb-6 grid h-16 w-16 place-items-center font-display italic text-parchment">ll</div>
+          <WaxSeal size={72} className="mx-auto mb-6" rotate={-6} />
           <p className="overline-label !text-wood">Your Order is Confirmed!</p>
           <h1 className="mt-4 font-display text-3xl italic leading-snug text-ink">{copy.orderConfirmed}</h1>
           <span className="mx-auto mt-6 block h-px w-24 bg-wood/30" />

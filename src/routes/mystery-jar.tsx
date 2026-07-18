@@ -2,7 +2,7 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { AnimatePresence, motion, useInView, useReducedMotion } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { mysteryJar, mysteryJarPrice } from "@/lib/brand.config";
-
+import { WaxSeal } from "@/components/WaxSeal";
 export const Route = createFileRoute("/mystery-jar")({ component: MysteryJar });
 
 /** slower than the main archive — this room moves like breath */
@@ -684,9 +684,7 @@ function PastJars() {
                   />
                 </div>
 
-                <div className="absolute -right-1 top-8 wax-seal grid h-12 w-12 rotate-[-12deg] place-items-center font-display text-[8px] small-caps tracking-wider">
-                  sealed
-                </div>
+                <WaxSeal size={52} className="absolute -right-1 top-6 z-[4]" rotate={-12} />
 
                 <p className="mt-4 font-hand text-[15px] leading-snug text-ink/90">
                   “{t.quote}”
@@ -746,17 +744,17 @@ function WaxSealStamp() {
       transition={{ duration: 0.5 }}
     >
       <motion.div
-        className="wax-seal relative grid h-36 w-36 place-items-center sm:h-44 sm:w-44"
+        className="relative"
         initial={{ scale: 2.2, y: -80, opacity: 0.3 }}
         animate={{ scale: 1, y: 0, opacity: 1 }}
         transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
       >
-        <span className="font-display text-sm small-caps tracking-[0.28em] text-parchment">Sealed</span>
+        <WaxSeal size={168} rotate={-6} />
         <motion.span
           aria-hidden
           className="pointer-events-none absolute inset-0 rounded-full"
-          initial={{ boxShadow: "0 0 0 0 rgba(110,42,42,0)" }}
-          animate={{ boxShadow: "0 0 0 28px rgba(110,42,42,0)" }}
+          initial={{ boxShadow: "0 0 0 0 rgba(176,120,138,0)" }}
+          animate={{ boxShadow: "0 0 0 28px rgba(176,120,138,0)" }}
           transition={{ duration: 0.9, delay: 0.35 }}
         />
       </motion.div>

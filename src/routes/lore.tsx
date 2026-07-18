@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import { loreEntries, type LoreType } from "@/lib/lore";
-
+import { WaxSeal } from "@/components/WaxSeal";
 export const Route = createFileRoute("/lore")({ component: LoreLibrary });
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -87,7 +87,7 @@ function LoreLibrary() {
                 </p>
                 {e.signoff && <p className="mt-5 font-hand text-xl text-wood">{e.signoff}</p>}
                 {e.type === "letter" && (
-                  <div className="wax-seal absolute -right-2 -top-2 grid h-10 w-10 place-items-center small-caps font-display text-[10px]">ll</div>
+                  <WaxSeal size={46} className="absolute -right-3 -top-3 z-[2]" rotate={-14} />
                 )}
                 {e.type === "fragment" && (
                   <svg viewBox="0 0 20 44" className="absolute -top-3 right-8 h-9 w-4 text-haze/60" fill="none" stroke="currentColor" strokeWidth="1.6">

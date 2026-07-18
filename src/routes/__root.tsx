@@ -119,9 +119,10 @@ function pageTexture(pathname: string) {
   if (pathname === "/") return "page-crushed";
   if (pathname.startsWith("/lore")) return "page-crushed";
   if (pathname.startsWith("/checkout")) return "page-crushed";
+  if (pathname.startsWith("/wishlist")) return "page-crushed"; // Me page — same cloth as home
   if (pathname.startsWith("/faq")) return "page-laid";
   if (pathname.startsWith("/admin")) return "page-laid";
-  return "page-velvet"; // mystery jar, wishlist, product pages
+  return "page-velvet"; // mystery jar, product pages
 }
 
 function RootComponent() {

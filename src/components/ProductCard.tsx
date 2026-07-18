@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import type { Product } from "@/lib/products";
 import { ProductPhoto } from "./ProductPhoto";
 import { useStore } from "@/lib/store";
-
 const shapes = ["pendant", "ring", "earring", "locket"] as const;
 
 export function ProductCard({ product, index = 0 }: { product: Product; index?: number }) {
@@ -154,7 +153,7 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
             </p>
             <button
               onClick={handleAdd}
-              className={`mt-3 w-full rounded-sm py-3 small-caps text-[12px] tracking-[0.3em] shadow-[0_0_20px_rgba(212,166,90,0.25)] transition-colors duration-500 ${added ? "bg-candle text-panel" : "bg-gold text-panel hover:bg-candle"}`}
+              className={`mt-3 w-full rounded-sm py-3.5 small-caps text-[13px] font-bold tracking-[0.28em] shadow-[0_0_20px_rgba(212,166,90,0.25)] transition-colors duration-500 ${added ? "bg-candle text-panel" : "bg-gold text-panel hover:bg-candle"}`}
             >
               {added ? "Added ✓" : "Add to Cart"}
             </button>

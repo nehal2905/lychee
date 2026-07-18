@@ -9,7 +9,7 @@ import { brand, copy } from "@/lib/brand.config";
 import { useStore } from "@/lib/store";
 import { EasterEggModal } from "@/components/EasterEggs";
 import { HomeMysteryJar, HomeMysteryJarMedallion } from "@/components/HomeMysteryJar";
-
+import { WaxSeal } from "@/components/WaxSeal";
 export const Route = createFileRoute("/")({ component: Home });
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -23,7 +23,6 @@ function Home() {
       <TrustSection />
       <LoreSection />
       <SoldArchive />
-      <HowItWorks />
       <Letters />
       <WhatsAppOptIn />
       <AboutStrip />
@@ -580,10 +579,7 @@ function LoreSection() {
                 <div className="m-1 h-[calc(100%-8px)] border border-wood/30" />
               </div>
 
-              {/* wax seal */}
-              <div className="wax-seal absolute bottom-5 right-5 grid h-14 w-14 place-items-center font-display italic text-parchment">
-                ll
-              </div>
+              <WaxSeal size={60} className="absolute bottom-3 right-3" rotate={-8} />
             </div>
 
             {/* the second secret — a tiny locket charm hanging off the letter's edge,
@@ -861,44 +857,12 @@ function TrustSection() {
   );
 }
 
-/* ---------------------------- HOW IT WORKS ------------------------------ */
-function HowItWorks() {
-  const steps = [
-    "Find your piece — every one is one of a kind",
-    "Checkout in seconds — safe UPI & card payments",
-    "We pack it with love — track it on WhatsApp",
-  ];
-  const romans = ["I", "II", "III"];
-  return (
-    <section className="px-6 py-24 sm:px-12">
-      <div className="mx-auto max-w-2xl">
-        <p className="overline-label mb-14 text-center">How the Magic Works</p>
-        <ol className="space-y-0">
-          {steps.map((s, i) => (
-            <motion.li
-              key={i}
-              initial={{ opacity: 0, x: -12 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.4, delay: i * 0.2, ease: EASE }}
-              className="flex items-baseline gap-6 border-b border-gold/15 py-8 first:border-t"
-            >
-              <span className="font-display text-2xl italic text-gold/70">{romans[i]}.</span>
-              <p className="font-display text-xl italic leading-snug text-cream/90 sm:text-2xl">{s}</p>
-            </motion.li>
-          ))}
-        </ol>
-      </div>
-    </section>
-  );
-}
-
 /* -------------------------- CUSTOMER LETTERS --------------------------- */
 function Letters() {
   const letters = [
-    { by: "Priya, Mumbai", text: "opened the box on a train. actually gasped. it feels like it always belonged to me." },
-    { by: "Meher, Delhi", text: "packaged like a love letter. wearing my ring every single day since." },
-    { by: "Ananya, Bangalore", text: "the lore card made me cry a little. i love that i know its story now." },
+    { by: "Priya, Mumbai", text: "Opened the box on a train. actually gasped. it feels like it always belonged to me." },
+    { by: "Meher, Delhi", text: "Packaged like a love letter. wearing my ring every single day since." },
+    { by: "Ananya, Bangalore", text: "The lore card made me cry a little. i love that i know its story now." },
   ];
   const scatter = [
     "sm:col-span-5 sm:col-start-1 sm:mt-16 rotate-imperfect-1",
@@ -935,7 +899,7 @@ function Letters() {
               <svg viewBox="0 0 20 44" className="absolute -top-3 left-6 h-10 w-5 text-haze/70" fill="none" stroke="currentColor" strokeWidth="1.6">
                 <path d="M14 6 v26 a4 4 0 0 1-8 0 V10 a2.5 2.5 0 0 1 5 0 v20" />
               </svg>
-              <div className="wax-seal absolute -right-2 -top-2 grid h-10 w-10 place-items-center small-caps font-display text-[10px]">ll</div>
+              <WaxSeal size={48} className="absolute -right-3 -top-3 z-[2]" rotate={i % 2 ? -12 : 8} />
               <div className="mb-3 text-sm tracking-[0.3em] text-[#8a6a2e]">★★★★★</div>
               <p className="font-type text-[14px] leading-relaxed text-ink">"{l.text}"</p>
               <p className="mt-5 font-hand text-xl text-wood">— {l.by}</p>
