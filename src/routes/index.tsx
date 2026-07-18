@@ -224,7 +224,7 @@ function Hero() {
               {/* soft moonlight bloom — tucked close around the moon */}
               <motion.span
                 aria-hidden
-                className="pointer-events-none absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full"
+                className="pointer-events-none absolute left-1/2 top-1/2 h-14 w-14 -translate-x-1/2 -translate-y-1/2 rounded-full"
                 style={{
                   background:
                     "radial-gradient(circle, rgba(243,233,215,0.28), rgba(212,166,90,0.10) 45%, transparent 70%)",
@@ -235,10 +235,10 @@ function Hero() {
               {/* a faint ring exactly around the moon — a subtle lunar halo */}
               <motion.span
                 aria-hidden
-                className="pointer-events-none absolute left-1/2 top-1/2 h-14 w-14 -translate-x-1/2 -translate-y-1/2 rounded-full"
+                className="pointer-events-none absolute left-1/2 top-1/2 h-8 w-8 -translate-x-1/2 -translate-y-1/2 rounded-full"
                 style={{
                   border: "1px solid rgba(243,233,215,0.5)",
-                  boxShadow: "0 0 8px rgba(243,233,215,0.4)",
+                  boxShadow: "0 0 6px rgba(243,233,215,0.4)",
                 }}
                 animate={{ opacity: [0.35, 0.6, 0.4], scale: [1, 1.04, 1] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
