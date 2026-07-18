@@ -32,9 +32,11 @@ function renderVariant(v: Variant) {
       return <div className="h-full w-full rounded animate-shimmer" />;
     case "checkout":
       return (
-        <div className="relative h-full w-full">
-          <div className="absolute inset-0 wax-seal animate-flicker grid place-items-center font-display italic text-parchment">ll</div>
-        </div>
+        <img
+          src="/logo.png?v=1"
+          alt=""
+          className="h-full w-full rounded-full object-cover animate-flicker"
+        />
       );
     case "search":
       return (

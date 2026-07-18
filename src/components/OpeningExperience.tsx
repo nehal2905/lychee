@@ -77,14 +77,14 @@ export function OpeningExperience() {
           {/* shell */}
           <div className="absolute inset-0 grid place-items-center">
             <div className="relative">
-              <motion.div
-                className="wax-seal mx-auto grid h-24 w-24 place-items-center font-display italic text-parchment/80 shadow-[0_0_40px_rgba(217,160,91,0.15)]"
+              <motion.img
+                src="/logo.png?v=1"
+                alt="Lychee Lore"
+                className="mx-auto h-32 w-32 rounded-full object-cover shadow-[0_0_55px_rgba(217,160,91,0.3)]"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 2.5, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <span className="text-4xl">ll</span>
-              </motion.div>
+              />
               <motion.p
                 className="mt-8 text-center font-hand text-4xl text-cream"
                 initial={{ opacity: 0 }}

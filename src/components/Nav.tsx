@@ -44,7 +44,8 @@ export function Nav() {
             </button>
           </div>
 
-          <Link to="/" className="absolute left-1/2 -translate-x-1/2 text-center font-display text-lg italic lowercase leading-none text-cream sm:text-xl">
+          <Link to="/" className="absolute left-1/2 flex -translate-x-1/2 items-center gap-2 text-center font-display text-lg italic lowercase leading-none text-cream sm:text-xl">
+            <img src="/logo.png?v=1" alt="" className="h-6 w-6 rounded-full object-cover sm:h-8 sm:w-8" />
             {brand.name}
           </Link>
 
