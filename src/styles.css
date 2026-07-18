@@ -2,6 +2,19 @@
 @source "../src";
 @import "tw-animate-css";
 
+/* Self-hosted fonts (same files Google serves) — no render-blocking external
+   stylesheet. All ship with font-display: swap. */
+@import "@fontsource-variable/fraunces/index.css";
+@import "@fontsource-variable/fraunces/standard-italic.css";
+@import "@fontsource-variable/lora/index.css";
+@import "@fontsource-variable/lora/wght-italic.css";
+@import "@fontsource-variable/dancing-script/index.css";
+@import "@fontsource-variable/caveat/index.css";
+@import "@fontsource/cormorant-garamond/500.css";
+@import "@fontsource/cormorant-garamond/600.css";
+@import "@fontsource/cormorant-garamond/500-italic.css";
+@import "@fontsource/cormorant-garamond/600-italic.css";
+
 @custom-variant dark (&:is(.dark *));
 
 /* ============================================================
@@ -50,14 +63,14 @@
   --color-popover: var(--panel);
   --color-popover-foreground: var(--cream);
 
-  --font-display: "Fraunces", "Playfair Display", serif;
-  --font-serif: "Lora", "EB Garamond", serif;
+  --font-display: "Fraunces Variable", "Fraunces", "Playfair Display", serif;
+  --font-serif: "Lora Variable", "Lora", "EB Garamond", serif;
   /* lore/label text was Special Elite (distressed typewriter) — now the readable
      body serif so paragraph-length lore actually reads */
-  --font-mono: "Lora", ui-serif, serif;
-  --font-hand: "Dancing Script", cursive;
+  --font-mono: "Lora Variable", "Lora", ui-serif, serif;
+  --font-hand: "Dancing Script Variable", "Dancing Script", cursive;
   /* fountain-pen hand for lore + reviews on crushed paper */
-  --font-ink: "Caveat", "Dancing Script", cursive;
+  --font-ink: "Caveat Variable", "Caveat", "Dancing Script Variable", cursive;
   /* Victorian editorial serif for review letters — ornate, still readable */
   --font-gothic: "Cormorant Garamond", "EB Garamond", "Times New Roman", serif;
 
