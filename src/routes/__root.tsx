@@ -86,7 +86,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "apple-touch-icon", href: "/logo.png?v=1" },
-      // preload the LCP hero (responsive AVIF) so it starts downloading immediately
+      // the opening screen's logo is the first-paint LCP — preload it
+      { rel: "preload", as: "image", href: "/logo.webp", type: "image/webp", fetchPriority: "high" },
+      // preload the hero (responsive AVIF) — the LCP once the opening screen lifts
       {
         rel: "preload",
         as: "image",

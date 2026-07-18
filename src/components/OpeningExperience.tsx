@@ -47,10 +47,12 @@ export function OpeningExperience() {
               <motion.img
                 src="/logo.webp"
                 alt="Lychee Lore"
+                fetchPriority="high"
+                decoding="async"
                 className="mx-auto h-44 w-44 rounded-full object-cover shadow-[0_0_28px_rgba(217,160,91,0.18)] sm:h-52 sm:w-52"
-                initial={{ opacity: 0, scale: 0.35 }}
+                initial={{ opacity: 0, scale: 0.6 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               />
               <motion.p
                 className="mt-8 text-center font-hand text-5xl text-cream"

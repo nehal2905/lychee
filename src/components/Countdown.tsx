@@ -60,7 +60,7 @@ function Colon() {
 function Unit({ v, l }: { v: number; l: string }) {
   return (
     <span className="flex w-7 flex-col items-center sm:w-9">
-      <span className="text-xl tabular-nums leading-none sm:text-2xl">{v.toString().padStart(2, "0")}</span>
+      <span className="text-xl tabular-nums leading-none sm:text-2xl" suppressHydrationWarning>{v.toString().padStart(2, "0")}</span>
       <span className="mt-1 small-caps text-[8px] tracking-[0.28em] text-cream/70">{l}</span>
     </span>
   );

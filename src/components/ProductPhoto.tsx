@@ -21,8 +21,10 @@ export function ProductPhoto({
       style={{ width: "100%", aspectRatio: "3/4" }}
     >
       <motion.img
-        src={`/${shape}.png`}
+        src={`/${shape}.webp`}
         alt={`Vintage ${shape}`}
+        loading="lazy"
+        decoding="async"
         className="h-full w-full object-cover opacity-90 transition duration-700 hover:scale-105 hover:opacity-100"
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 0.9, scale: 1 }}
