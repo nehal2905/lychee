@@ -32,11 +32,20 @@ function renderVariant(v: Variant) {
       return <div className="h-full w-full rounded animate-shimmer" />;
     case "checkout":
       return (
-        <img
-          src="/logo.png?v=1"
-          alt=""
-          className="h-full w-full rounded-full object-cover animate-flicker"
-        />
+        <div className="relative h-full w-full">
+          <img
+            src="/logo.png?v=1"
+            alt=""
+            className="h-full w-full rounded-full object-cover"
+          />
+          {/* a spinning gold ring so the logo clearly reads as "loading" */}
+          <motion.span
+            aria-hidden
+            className="absolute -inset-1.5 rounded-full border-2 border-transparent border-t-gold border-r-gold/40"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 1.1, repeat: Infinity, ease: "linear" }}
+          />
+        </div>
       );
     case "search":
       return (

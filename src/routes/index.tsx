@@ -154,20 +154,18 @@ function Hero() {
       {/* the stage — locked to exactly one screen; the artwork fills it,
           never the other way around. swap the art, the layout holds. */}
       <motion.div
-        className="relative mx-auto"
+        className="relative mx-auto md:bg-[#0C0610]"
         style={{ height: "calc(100svh - 3.5rem)" }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 2.4, ease: EASE }}
       >
         {artOk ? (
-          <motion.img
+          <img
             src="/hero.png?v=4"
             alt="A candlelit desk before an arched window at dusk — dark roses, vintage jewellery, a melting candle, and a jar of fairy lights"
-            className="h-full w-full object-cover object-[50%_35%] will-change-transform md:object-contain"
+            className="h-full w-full object-cover object-[50%_35%] md:object-contain"
             onError={() => setArtOk(false)}
-            animate={{ scale: [1, 1.06, 1.04, 1], x: ["0%", "-1.4%", "1%", "0%"], y: ["0%", "-1%", "-0.4%", "0%"] }}
-            transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
           />
         ) : (
           /* graceful stand-in until /hero.png is added to public/ */
@@ -323,8 +321,7 @@ function Hero() {
         {/* the countdown floats over the desk, fully visible — and beneath it,
             a candle-flicker chevron whispers "there is more below" */}
         <motion.div
-          className="absolute inset-x-0 bottom-[7.5rem] z-10 flex flex-col items-center gap-2.5 px-6 md:bottom-10"
-          style={{ paddingRight: "14%" }}
+          className="absolute inset-x-0 bottom-[13rem] z-10 flex flex-col items-center gap-2.5 px-6 md:bottom-[16rem]"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 2, delay: 0.8, ease: EASE }}

@@ -1,4 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
+import { useEffect, useRef, useState } from "react";
 import { useStore } from "@/lib/store";
 
 // fixed bottom navigation for one-handed mobile use.
@@ -6,6 +7,38 @@ import { useStore } from "@/lib/store";
 export function BottomNav() {
   const { setCartOpen, cart } = useStore();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+
+  // scroll-spy: on the home page, light "Shop" when the shelf/drop sections
+  // are centred in view, otherwise "Home".
+  const [inShop, setInShop] = useState(false);
+  const visible = useRef<Set<Element>>(new Set());
+  useEffect(() => {
+    visible.current.clear();
+    if (pathname !== "/") {
+      setInShop(false);
+      return;
+    }
+    const els = ["shelf", "drop"]
+      .map((id) => document.getElementById(id))
+      .filter(Boolean) as HTMLElement[];
+    if (!els.length) return;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) visible.current.add(e.target);
+          else visible.current.delete(e.target);
+        });
+        setInShop(visible.current.size > 0);
+      },
+      { rootMargin: "-45% 0px -45% 0px" }
+    );
+    els.forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+  }, [pathname]);
+
+  const onHome = pathname === "/";
+  const homeActive = onHome && !inShop;
+  const shopActive = onHome && inShop;
 
   const itemCls = (active: boolean) =>
     `flex flex-1 flex-col items-center gap-1 py-2.5 transition-colors duration-500 ${
@@ -21,7 +54,7 @@ export function BottomNav() {
       style={{ borderTop: "1px solid rgba(184,148,90,0.3)", paddingBottom: "env(safe-area-inset-bottom)" }}
     >
       <div className="mx-auto flex max-w-md items-stretch">
-        <Link to="/" className={itemCls(pathname === "/")} style={glow(pathname === "/")}>
+        <Link to="/" className={itemCls(homeActive)} style={glow(homeActive)}>
           {/* home — an arched window */}
           <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.2">
             <path d="M5 20 V11 a7 7 0 0 1 14 0 v9" />
@@ -31,7 +64,7 @@ export function BottomNav() {
           <span className="small-caps text-[9px] tracking-[0.22em]">Home</span>
         </Link>
 
-        <Link to="/" hash="drop" className={itemCls(false)}>
+        <Link to="/" hash="drop" className={itemCls(shopActive)} style={glow(shopActive)}>
           {/* shop — a faceted gem */}
           <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.1" strokeLinejoin="round">
             <path d="M7.5 4.5 h9 L21 9.5 L12 20.5 L3 9.5 Z" />

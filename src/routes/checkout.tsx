@@ -74,7 +74,7 @@ function Checkout() {
 
   /* --------------------------- CHECKOUT --------------------------- */
   return (
-    <section className="px-6 py-16 sm:px-12">
+    <section className="lace-frame min-h-screen px-5 py-10 sm:px-10 sm:py-14">
       <div className="mx-auto max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}

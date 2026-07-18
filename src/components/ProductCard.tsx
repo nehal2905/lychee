@@ -6,12 +6,13 @@ import { ProductPhoto } from "./ProductPhoto";
 import { useStore } from "@/lib/store";
 
 const shapes = ["pendant", "ring", "earring", "locket"] as const;
-const romans = ["i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x", "xi", "xii"];
 
 export function ProductCard({ product, index = 0 }: { product: Product; index?: number }) {
   const { wishlist, toggleWishlist, addToCart } = useStore();
   const [sparkle, setSparkle] = useState(false);
   const [bloom, setBloom] = useState(false);
+  const [added, setAdded] = useState(false);
+  const addedTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const tapCount = useRef(0);
   const tapTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pressTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -38,7 +39,15 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
   useEffect(() => () => {
     if (tapTimer.current) clearTimeout(tapTimer.current);
     if (pressTimer.current) clearTimeout(pressTimer.current);
+    if (addedTimer.current) clearTimeout(addedTimer.current);
   }, []);
+
+  const handleAdd = () => {
+    addToCart(product.id);
+    setAdded(true);
+    if (addedTimer.current) clearTimeout(addedTimer.current);
+    addedTimer.current = setTimeout(() => setAdded(false), 1400);
+  };
 
   return (
     <motion.article
@@ -133,37 +142,25 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
         </button>
       </div>
 
-      {/* museum plate caption — the story leads, the price whispers */}
+      {/* clean caption — name, price, and a bold add-to-cart */}
       <div className="mt-4 px-0.5">
-        <div className="flex items-baseline gap-3">
-          <span className="font-type text-[9px] tracking-[0.3em] text-haze/80">
-            No. {romans[index % romans.length]}
-          </span>
-          <span className="hairline flex-1 opacity-40" />
-        </div>
-        <h3 className="mt-1.5 font-display text-xl italic leading-tight text-cream sm:text-2xl">
+        <h3 className="font-display text-xl italic leading-tight text-cream sm:text-2xl">
           {product.name}
         </h3>
-        <p className="mt-1 small-caps text-[11px] tracking-[0.22em] text-haze">
-          {product.gemstone} · {product.metal} · {product.era}
-        </p>
-        <p className="mt-0.5 small-caps text-[10px] tracking-[0.26em] text-gold/70">
-          One of a Kind
-        </p>
         {!sold ? (
-          <div className="mt-3 flex items-center gap-3">
-            <span className="small-caps font-display text-[13px] text-gold/85">
+          <>
+            <p className="mt-2 font-display text-xl text-candle sm:text-2xl">
               ₹{product.price.toLocaleString("en-IN")}
-            </span>
+            </p>
             <button
-              onClick={() => addToCart(product.id)}
-              className="flex-1 border border-gold/35 py-2.5 small-caps text-[11px] tracking-[0.3em] text-cream/85 transition-colors duration-700 hover:border-gold/70 hover:text-gold"
+              onClick={handleAdd}
+              className={`mt-3 w-full rounded-sm py-3 small-caps text-[12px] tracking-[0.3em] shadow-[0_0_20px_rgba(212,166,90,0.25)] transition-colors duration-500 ${added ? "bg-candle text-panel" : "bg-gold text-panel hover:bg-candle"}`}
             >
-              Add to Cart
+              {added ? "Added ✓" : "Add to Cart"}
             </button>
-          </div>
+          </>
         ) : (
-          <p className="mt-3 small-caps font-display text-[13px] text-haze/70">
+          <p className="mt-2 small-caps font-display text-[15px] text-haze/70">
             ₹{product.price.toLocaleString("en-IN")}
           </p>
         )}

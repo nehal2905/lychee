@@ -69,7 +69,7 @@ export function Footer() {
           </div>
 
           {/* the only spoken trace of the hunt */}
-          <p className="mt-10 font-hand text-base text-haze/60">three secrets live in these pages.</p>
+          <p className="mt-10 font-hand text-xl text-cream/70">three secrets live in these pages.</p>
 
           {/* the third secret — a butterfly resting in the margin, wings barely
               moving, drawn in a whisper of gold. it flutters only when found. */}

@@ -35,14 +35,14 @@ export function CartDrawer() {
                   <p className="overline-label">The Keepsake Box</p>
                   <h2 className="mt-2 font-display text-3xl italic text-cream">Your Treasures</h2>
                 </div>
-                <button onClick={() => setCartOpen(false)} aria-label="Close" className="font-display text-2xl text-gold transition-colors duration-500 hover:text-candle">×</button>
+                <button onClick={() => setCartOpen(false)} aria-label="Close" className="-mr-1 p-1 font-display text-4xl leading-none text-gold transition-colors duration-500 hover:text-candle">×</button>
               </div>
               <span className="hairline mt-5 block w-full" />
             </header>
 
             <div className="flex-1 overflow-y-auto px-7">
               {items.length === 0 ? (
-                <p className="mt-16 text-center font-hand text-2xl text-cream/60">
+                <p className="mt-16 text-center font-hand text-3xl text-cream/80">
                   Your box is empty — for now.
                 </p>
               ) : (
@@ -58,7 +58,7 @@ export function CartDrawer() {
                       />
                       <div className="flex min-w-0 flex-1 flex-col gap-0.5">
                         <span className="truncate font-display text-lg italic text-cream">{p.name}</span>
-                        <span className="small-caps text-[10px] tracking-[0.24em] text-haze">{p.gemstone}</span>
+                        <span className="small-caps text-[11px] tracking-[0.24em] text-cream/60">{p.gemstone}</span>
                         <span className="mt-1 small-caps font-display text-gold">₹{p.price.toLocaleString("en-IN")}</span>
                       </div>
                       <button
@@ -78,18 +78,18 @@ export function CartDrawer() {
               <footer className="px-7 pb-8 pt-5">
                 <span className="hairline block w-full" />
                 <div className="mt-5 flex items-baseline justify-between">
-                  <span className="small-caps text-[11px] tracking-[0.3em] text-haze">Subtotal</span>
+                  <span className="small-caps text-[12px] tracking-[0.3em] text-cream/75">Subtotal</span>
                   <span className="small-caps font-display text-cream">₹{subtotal.toLocaleString("en-IN")}</span>
                 </div>
                 <div className="mt-2 flex items-baseline justify-between">
-                  <span className="small-caps text-[11px] tracking-[0.3em] text-haze">Shipping</span>
+                  <span className="small-caps text-[12px] tracking-[0.3em] text-cream/75">Shipping</span>
                   <span className="small-caps font-display text-cream/80">₹{shippingFee}</span>
                 </div>
                 <div className="mt-3 flex items-baseline justify-between border-t border-gold/15 pt-3">
-                  <span className="small-caps text-[11px] tracking-[0.3em] text-haze">Total</span>
+                  <span className="small-caps text-[12px] tracking-[0.3em] text-cream/75">Total</span>
                   <span className="font-display text-2xl text-gold">₹{(subtotal + shippingFee).toLocaleString("en-IN")}</span>
                 </div>
-                <p className="mt-3 font-hand text-sm text-haze">{copy.finalSale}</p>
+                <p className="mt-3 font-hand text-base text-cream/70">{copy.finalSale}</p>
                 <Link
                   to="/checkout"
                   onClick={() => setCartOpen(false)}

@@ -176,6 +176,20 @@
 }
 
 /* ============================================================
+   The billing deed rests on a lace-edged aubergine velvet mat.
+   border-image keeps the lace corners crisp and the velvet centre
+   fills to any height; the lace band is ~100px on every edge of the
+   675x1200 source. Thinner frame on mobile, fuller on larger screens.
+   ============================================================ */
+.lace-frame {
+  border: 26px solid transparent;
+  border-image: url("/lace-velvet.png") 100 fill round;
+}
+@media (min-width: 640px) {
+  .lace-frame { border-width: 48px; }
+}
+
+/* ============================================================
    Typography instruments
    ============================================================ */
 

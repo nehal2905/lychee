@@ -18,6 +18,10 @@ export function Nav() {
     else navigate({ to: "/" });
   };
 
+  // a menu row lights like a candle when it's the page you're on
+  const drawerCls = (active: boolean) =>
+    `flex items-center gap-2.5 transition-colors duration-500 ${active ? "text-candle" : "text-cream hover:text-candle"}`;
+
   return (
     <>
       <header
@@ -28,8 +32,8 @@ export function Nav() {
           <div className="flex items-center gap-3">
             {/* on any inner page, the way back is always one tap away */}
             {onSubpage && (
-              <button aria-label="Go back" onClick={goBack} className="p-1 text-gold transition-colors duration-500 hover:text-candle">
-                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round">
+              <button aria-label="Go back" onClick={goBack} className="-ml-1 p-2 text-gold transition-colors duration-500 hover:text-candle">
+                <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
                   <path d="M14.5 5.5 L8 12 l6.5 6.5" />
                 </svg>
               </button>
@@ -55,7 +59,7 @@ export function Nav() {
               <Link
                 to="/"
                 aria-label="Exit to home"
-                className="font-display text-xl leading-none text-gold/70 transition-colors duration-500 hover:text-candle"
+                className="p-1 font-display text-3xl leading-none text-gold/70 transition-colors duration-500 hover:text-candle"
               >
                 ×
               </Link>
@@ -107,14 +111,27 @@ export function Nav() {
               <span className="hairline mt-4 w-16" />
 
               <nav className="mt-10 flex flex-col gap-7 font-display text-2xl italic text-cream">
-                <Link onClick={() => setOpen(false)} to="/" className="transition-colors duration-500 hover:text-candle">Home</Link>
-                <Link onClick={() => setOpen(false)} to="/mystery-jar" className="text-candle">
+                <Link onClick={() => setOpen(false)} to="/" className={drawerCls(pathname === "/")}>
+                  {pathname === "/" && <span className="text-base not-italic leading-none text-candle">✦</span>}
+                  Home
+                </Link>
+                <Link onClick={() => setOpen(false)} to="/mystery-jar" className={drawerCls(pathname.startsWith("/mystery-jar"))}>
+                  {pathname.startsWith("/mystery-jar") && <span className="text-base not-italic leading-none text-candle">✦</span>}
                   The Mystery Jar <span className="animate-flicker text-sm">✦</span>
                 </Link>
-                <Link onClick={() => setOpen(false)} to="/lore" className="transition-colors duration-500 hover:text-candle">The Lore Library</Link>
-                <Link onClick={() => setOpen(false)} to="/wishlist" className="transition-colors duration-500 hover:text-candle">Wishlist</Link>
-                <Link onClick={() => setOpen(false)} to="/faq" className="transition-colors duration-500 hover:text-candle">Questions</Link>
-                <a href={brand.instagramUrl} target="_blank" rel="noreferrer" className="transition-colors duration-500 hover:text-candle">Instagram</a>
+                <Link onClick={() => setOpen(false)} to="/lore" className={drawerCls(pathname.startsWith("/lore"))}>
+                  {pathname.startsWith("/lore") && <span className="text-base not-italic leading-none text-candle">✦</span>}
+                  The Lore Library
+                </Link>
+                <Link onClick={() => setOpen(false)} to="/wishlist" className={drawerCls(pathname.startsWith("/wishlist"))}>
+                  {pathname.startsWith("/wishlist") && <span className="text-base not-italic leading-none text-candle">✦</span>}
+                  Wishlist
+                </Link>
+                <Link onClick={() => setOpen(false)} to="/faq" className={drawerCls(pathname.startsWith("/faq"))}>
+                  {pathname.startsWith("/faq") && <span className="text-base not-italic leading-none text-candle">✦</span>}
+                  Questions
+                </Link>
+                <a href={brand.instagramUrl} target="_blank" rel="noreferrer" className={drawerCls(false)}>Instagram</a>
               </nav>
 
               <div className="mt-auto">
